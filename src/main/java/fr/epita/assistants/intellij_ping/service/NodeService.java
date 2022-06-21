@@ -11,6 +11,7 @@ public class NodeService implements fr.epita.assistants.myide.domain.service.Nod
             return node;
 
         File file = new File(node.getPath().toString());
+        return null;
     }
 
     @Override

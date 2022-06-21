@@ -2,6 +2,7 @@ package fr.epita.assistants.intellij_ping.entity.mandatory.features.maven;
 
 import fr.epita.assistants.intellij_ping.Utils.MyError;
 import fr.epita.assistants.intellij_ping.entity.FeatureEntity;
+import fr.epita.assistants.myide.domain.entity.Feature;
 import fr.epita.assistants.myide.domain.entity.Project;
 
 import java.io.File;
@@ -15,7 +16,8 @@ public abstract class MavenFeature extends FeatureEntity {
     protected ExecutionReport mavenExecute(Project project, String arg, Object... params) {
         ArrayList<String> cmdArray = new ArrayList<>(Arrays.asList("mvn", arg));
         cmdArray.addAll(Arrays.stream(params).map(param -> (String) param).toList());
-        return () -> runCmd(cmdArray, project);
+        var bool = runCmd(cmdArray, project);
+        return () -> bool;
     }
 
     private static boolean runProcessBuilder(ProcessBuilder pb){
