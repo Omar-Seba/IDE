@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"fr.epita.assistants"},{"l":"fr.epita.assistants.myide.domain.entity"},{"l":"fr.epita.assistants.myide.domain.service"},{"l":"fr.epita.assistants.utils"}];updateSearchResults();
