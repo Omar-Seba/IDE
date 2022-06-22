@@ -20,8 +20,8 @@ public class Main {
         var tmp = project.getFeature(Mandatory.Features.Maven.EXEC).get().execute(project).isSuccess();
         System.out.println(tmp);*/
 
-        ProjectService projectService = MyIde.init(null);
-        Path root = Paths.get("/tmp/test").toAbsolutePath();
+        /*ProjectService projectService = MyIde.init(null);
+        Path root = Paths.get("/tmp/test2").toAbsolutePath();
         Project project = projectService.load(root);
 
         //System.out.println(projectService.getNodeService().update(project.getRootNode(), 0,5, "Hello".getBytes()).getPath());
@@ -31,7 +31,15 @@ public class Main {
         Node updateNode = projectService.getNodeService().update(createNode, 0,10, "Hello Guys".getBytes());
         System.out.println(updateNode.getPath());
         Node moveNode = projectService.getNodeService().move(updateNode, createNodeFolder);
-        System.out.println(moveNode.getPath());
+        System.out.println(moveNode.getPath());*/
+
+        ProjectService projectService = MyIde.init(null);
+        Path root = Paths.get("/tmp/test").toAbsolutePath();
+        Project project = projectService.load(root);
+
+        //System.out.println(project.getFeature(Mandatory.Features.Git.ADD).get().execute(project, "other").isSuccess());
+        //System.out.println(project.getFeature(Mandatory.Features.Git.COMMIT).get().execute(project, "Ici", "on commit", "et ouai.").isSuccess());
+        //System.out.println(project.getFeature(Mandatory.Features.Git.PULL).get().execute(project).isSuccess());
     }
 }
 

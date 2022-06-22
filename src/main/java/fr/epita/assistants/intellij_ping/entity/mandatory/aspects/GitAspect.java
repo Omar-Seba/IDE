@@ -8,13 +8,19 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class GitAspect extends AspectEntity {
     public GitAspect(File directory) {
-        Git git = initGit(directory);
-        _features = Arrays.asList(new GitPull(git), new GitAdd(git), new GitCommit(git), new GitPush(git));
-        _type = Mandatory.Aspects.GIT;
+        try {
+            Git git = Git.open( new File( directory + "/.git" ) );
+
+            _features = Arrays.asList(new GitPull(git), new GitAdd(git), new GitCommit(git), new GitPush(git));
+            _type = Mandatory.Aspects.GIT;
+        } catch (IOException e) {
+            throw new MyError("GitAspect", "Impossible to open the git");
+        }
     }
 
     private static Git initGit(File directory){

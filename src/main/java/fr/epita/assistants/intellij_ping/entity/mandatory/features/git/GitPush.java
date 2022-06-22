@@ -18,6 +18,7 @@ public class GitPush extends GitHandler {
             _git.push().call();
             return () -> true;
         } catch (GitAPIException e) {
+            e.printStackTrace();
             return () -> false;
         }
     }

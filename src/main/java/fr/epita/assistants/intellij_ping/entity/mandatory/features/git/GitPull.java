@@ -19,6 +19,7 @@ public class GitPull extends GitHandler {
             _git.pull().setFastForward(MergeCommand.FastForwardMode.FF).call();
             return () -> true;
         } catch (GitAPIException e) {
+            e.printStackTrace();
             return () -> false;
         }
     }
