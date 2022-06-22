@@ -56,7 +56,7 @@ public class AnyUtils {
             if (child.isDirectory()) {
                 return search(child, searchString);
             }
-            return searchInFile(child, searchString);
+            return searchInFile_any(child, searchString);
         }).flatMap(List::stream).collect(Collectors.toList());
     }
     private static boolean checkRec(List<String> toDelete, String filename, boolean isDirectory) {
@@ -107,37 +107,36 @@ public class AnyUtils {
         }
     }
 
-    private static List<Integer> getOccurrencesInLine(String line, String searchString) {
-        List<Integer> startIndices = new ArrayList<>();
-        int searchStringLength = searchString.length();
+    private static List<Integer> getOccurrences_any(String line, String searchString) {
+        List<Integer> startIndex = new ArrayList<>();
+        int StringSearchLength = searchString.length();
         int searchFrom = 0;
-        int index;
-        while ((index = line.indexOf(searchString, searchFrom)) != -1) {
-            startIndices.add(index);
-            searchFrom = index + searchStringLength;
+        for (int index = line.indexOf(searchString, searchFrom); index != -1; index = line.indexOf(searchString, searchFrom)){
+            startIndex.add(index);
+            searchFrom = index + StringSearchLength;
         }
-        return startIndices;
+        return startIndex;
     }
 
-    private static List<SearchInfo> searchInFile(File file, String searchString) {
-        List<SearchInfo> searchResults = new ArrayList<>();
-        String searchStringLowerCase = searchString.toLowerCase();
+    private static List<SearchInfo> searchInFile_any(File file, String searchString) {
+        List<SearchInfo> searchInfoList = new ArrayList<>();
+        String s = searchString.toLowerCase();
         try {
             final Scanner scanner = new Scanner(file);
-            int lineNumber = 1;
+            int line_number = 1;
             while (scanner.hasNextLine()) {
                 final String line = scanner.nextLine();
                 final String lineLowerCase = line.toLowerCase();
-                List<Integer> startIndices = getOccurrencesInLine(lineLowerCase, searchStringLowerCase);
-                if (!startIndices.isEmpty()) {
-                    searchResults.add(new SearchInfo(file, line, lineNumber, searchString, startIndices));
+                List<Integer> startIndex = getOccurrences_any(lineLowerCase, s);
+                if (!startIndex.isEmpty()) {
+                    searchInfoList.add(new SearchInfo(file, line, line_number, searchString, startIndex));
                 }
-                lineNumber++;
+                line_number++;
             }
         } catch (FileNotFoundException e) {
             throw new MyError("any Utils search in files", e.getMessage());
         }
-        return searchResults;
+        return searchInfoList;
     }
 
 }
