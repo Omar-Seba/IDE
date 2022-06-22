@@ -14,7 +14,7 @@ public class MavenTree extends MavenFeature {
     @Override
     public ExecutionReport execute(Project project, Object... params) {
         try {
-            return mavenExecute(project, "tree", params);
+            return mavenExecute(project, "dependency:tree", params);
         } catch (MyError e) {
             return Status.fail();
         }
