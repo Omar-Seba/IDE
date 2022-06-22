@@ -4,7 +4,6 @@ import fr.epita.assistants.intellij_ping.Utils.MyError;
 import fr.epita.assistants.intellij_ping.entity.mandatory.features.maven.MavenFeature;
 import fr.epita.assistants.myide.domain.entity.Mandatory;
 import fr.epita.assistants.myide.domain.entity.Project;
-import fr.epita.assistants.utils.Status;
 
 public class MavenPackage extends MavenFeature {
     public MavenPackage() {
@@ -16,7 +15,7 @@ public class MavenPackage extends MavenFeature {
         try {
             return mavenExecute(project, "package", params);
         } catch (MyError e) {
-            return Status.fail();
+            return () -> false;
         }
     }
 
