@@ -11,7 +11,5 @@ public abstract class FeatureEntity implements Feature {
     public abstract ExecutionReport execute(Project project, Object... params);
 
     @Override
-    public Type type() {
-        return _type;
-    }
+    public abstract Type type();
 }

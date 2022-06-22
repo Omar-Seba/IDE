@@ -21,4 +21,8 @@ public class MavenInstall extends MavenFeature {
         }
     }
 
+    @Override
+    public Type type() {
+        return Mandatory.Features.Maven.INSTALL;
+    }
 }

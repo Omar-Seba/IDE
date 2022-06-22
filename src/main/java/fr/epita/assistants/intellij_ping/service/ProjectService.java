@@ -11,6 +11,7 @@ import java.util.Optional;
 
 public class ProjectService implements fr.epita.assistants.myide.domain.service.ProjectService {
 
+    NodeService nodeService = new fr.epita.assistants.intellij_ping.service.NodeService();
 
     @Override
     public Project load(Path root) {
@@ -25,6 +26,6 @@ public class ProjectService implements fr.epita.assistants.myide.domain.service.
 
     @Override
     public NodeService getNodeService() {
-        throw new NotImplementedException("node service not done");
+        return nodeService;
     }
 }

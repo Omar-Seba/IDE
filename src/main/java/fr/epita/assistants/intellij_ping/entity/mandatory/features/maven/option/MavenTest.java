@@ -20,4 +20,9 @@ public class MavenTest extends MavenFeature {
             throw new NotImplementedException("error");
         }
     }
+
+    @Override
+    public Type type() {
+        return Mandatory.Features.Maven.TEST;
+    }
 }

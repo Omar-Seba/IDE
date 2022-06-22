@@ -19,4 +19,9 @@ public class MavenClean extends MavenFeature {
             return Status.fail();
         }
     }
+
+    @Override
+    public Type type() {
+        return Mandatory.Features.Maven.CLEAN;
+    }
 }

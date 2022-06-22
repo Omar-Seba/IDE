@@ -19,4 +19,9 @@ public class MavenPackage extends MavenFeature {
             return Status.fail();
         }
     }
+
+    @Override
+    public Type type() {
+        return Mandatory.Features.Maven.PACKAGE;
+    }
 }
