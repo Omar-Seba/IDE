@@ -12,23 +12,30 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class GitAspect extends AspectEntity {
-    public GitAspect(File directory) {
+    public GitAspect(File directory){
+        Git git;
+        File gitDirectory = new File(directory + "/.git");
+        if(!gitDirectory.isDirectory())
+            return;
         try {
-            Git git = Git.open( new File( directory + "/.git" ) );
-
-            _features = Arrays.asList(new GitPull(git), new GitAdd(git), new GitCommit(git), new GitPush(git));
-            _type = Mandatory.Aspects.GIT;
+             git = Git.open(gitDirectory);
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new MyError("GitAspect", "Impossible to open the git");
+            try {
+                Git.init().setDirectory(gitDirectory).call();
+                git = Git.open(gitDirectory);
+            } catch (Exception exp) {
+                throw new MyError("git Aspect", "couldn't init the repository " + exp.getMessage());
+            }
         }
+        _features = Arrays.asList(new GitPull(git), new GitAdd(git), new GitCommit(git), new GitPush(git));
+        _type = Mandatory.Aspects.GIT;
     }
 
     private static Git initGit(File directory){
         try {
             return Git.init().setDirectory(directory).call();
         } catch (GitAPIException e) {
-            throw new MyError("GitAspect", "Impossible to init git");
+            throw new MyError("GitAspect", "Impossible to init git" + e.getMessage());
         }
     }
 }
