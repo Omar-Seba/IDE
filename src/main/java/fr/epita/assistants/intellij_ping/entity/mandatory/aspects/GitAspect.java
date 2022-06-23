@@ -19,6 +19,7 @@ public class GitAspect extends AspectEntity {
             _features = Arrays.asList(new GitPull(git), new GitAdd(git), new GitCommit(git), new GitPush(git));
             _type = Mandatory.Aspects.GIT;
         } catch (IOException e) {
+            e.printStackTrace();
             throw new MyError("GitAspect", "Impossible to open the git");
         }
     }
