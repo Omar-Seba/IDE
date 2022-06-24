@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:400,700,800&display=swap");
+
+.header {
+    font-family: "Muli", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: left;
+    background-color: #424242;
+    display: flex;
+    flex-flow: row wrap;
+    height: 65px !important;
+
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.logo {
+    margin: 0.2rem;
+    height: 5vmin;
+    pointer-events: none;
+}
+
+.multi-button {
+    top: 0.4rem;
+    position: absolute;
+    right: 2rem;
+}
+
+button {
+    margin-left: 1rem;
+    border: 0;
+    border-radius: 5px;
+    color: #1F1A25;
+    font-family: "Muli", Arial, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: #78E0DC;
+    box-shadow: 0 8px #2dc5bf;
+}
+button:hover {
+    cursor: pointer;
+}
+button:focus {
+    outline: none;
+}
+button:hover, button:focus {
+    background-color: #4fd6d1;
+}
+button:active {
+    transform: translateY(4px);
+    box-shadow: 0 3px #2dc5bf;
+}
+
+.btn-primary {
+    margin-top: 0.2rem;
+    border: 0;
+    border-radius: 5px;
+    color: #1F1A25;
+    font-family: "Muli", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #38b224;
+    box-shadow: 0 8px #2e8c00;
+}
+.btn-primary:hover {
+    cursor: pointer;
+}
+.btn-primary:focus {
+    outline: none;
+}
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #80ea57;
+}
+.btn-primary:active {
+    transform: translateY(4px);
+    box-shadow: 0 3px #59dc3b;
+}
+
+.btn-secondary {
+    border: 0;
+    border-radius: 5px;
+    color: #1F1A25;
+    font-family: "Muli", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #ff3030;
+    box-shadow: 0 8px #791e1e;
+}
+.btn-secondary:hover {
+    cursor: pointer;
+}
+.btn-secondary:focus {
+    outline: none;
+}
+.btn-secondary:hover, .btn-secondary:focus {
+    background-color: #ff5959;
+}
+.btn-secondary:active {
+    transform: translateY(4px);
+    box-shadow: 0 3px #e31515;
+}
+
+.btn-secondary-custom {
+    border: 0;
+    border-radius: 5px;
+    color: #1F1A25;
+    font-family: "Muli", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #FDE74C;
+    box-shadow: 0 8px #e0c503;
+}
+.btn-secondary-custom:hover {
+    cursor: pointer;
+}
+.btn-secondary-custom:focus {
+    outline: none;
+}
+.btn-secondary-custom:hover, .btn-secondary-custom:focus {
+    background-color: #d5c44e;
+}
+.btn-secondary-custom:active {
+    transform: translateY(4px);
+    box-shadow: 0 3px #e0c503;
+}
