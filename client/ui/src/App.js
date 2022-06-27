@@ -1,41 +1,42 @@
 import React from 'react';
 import './App.css';
 import Header from "./components/header-bar/Header";
+import FileSystemNavigator from "./components/drawerleft";
 
 const treeData = [
     {
-        key: "0",
-        label: "Documents",
+        key: "0-0",
+        name: "Documents",
         icon: "fa fa-folder",
         title: "Documents Folder",
         children: [
             {
-                key: "0-0",
-                label: "Document 1-1",
+                key: "0-1",
+                name: "Document 0-1",
                 icon: "fa fa-folder",
                 title: "Documents Folder",
                 children: [
                     {
                         key: "0-1-1",
-                        label: "Document-0-1.doc",
+                        name: "Document-0-1.doc",
                         icon: "fa fa-file",
                         title: "Documents Folder",
                     },
                     {
                         key: "0-1-2",
-                        label: "Document-0-2.doc",
+                        name: "Document-0-2.doc",
                         icon: "fa fa-file",
                         title: "Documents Folder",
                     },
                     {
                         key: "0-1-3",
-                        label: "Document-0-3.doc",
+                        name: "Document-0-3.doc",
                         icon: "fa fa-file",
                         title: "Documents Folder",
                     },
                     {
                         key: "0-1-4",
-                        label: "Document-0-4.doc",
+                        name: "Document-0-4.doc",
                         icon: "fa fa-file",
                         title: "Documents Folder",
                     },
@@ -45,19 +46,19 @@ const treeData = [
     },
     {
         key: "1",
-        label: "Desktop",
+        name: "Desktop",
         icon: "fa fa-desktop",
         title: "Desktop Folder",
         children: [
             {
                 key: "1-0",
-                label: "document1.doc",
+                name: "document1.doc",
                 icon: "fa fa-file",
                 title: "Documents Folder",
             },
             {
-                key: "0-0",
-                label: "documennt-2.doc",
+                key: "1-2",
+                name: "documennt-2.doc",
                 icon: "fa fa-file",
                 title: "Documents Folder",
             },
@@ -65,20 +66,20 @@ const treeData = [
     },
     {
         key: "2",
-        label: "Downloads",
+        name: "Downloads",
         icon: "fa fa-download",
         title: "Downloads Folder",
         children: [],
     },
-];
-
+]
 
 function App() {
-  return (
-    <div className="App">
-        <Header />
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header/>
+            <FileSystemNavigator collection={treeData}/>
+        </div>
+    );
 }
 
 export default App;
