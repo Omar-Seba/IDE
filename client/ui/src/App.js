@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Header from "./components/header-bar/Header";
 import FileSystemNavigator from "./components/drawerleft";
+import {Allotment} from "allotment";
+import "allotment/dist/style.css";
 
 const treeData = [
     {
@@ -73,13 +75,31 @@ const treeData = [
     },
 ]
 
-function App() {
-    return (
-        <div className="App">
-            <Header/>
-            <FileSystemNavigator collection={treeData}/>
-        </div>
-    );
-}
+const App = () => 
+(
+    <div className="App" >
+        <Header/>
+        <Allotment>
+            <Allotment.Pane
+            preferredSize={200}
+            minSize={120}
+            priority="HIGH"
+            snap
+            visible
+            >
+                <FileSystemNavigator collection={treeData}/>
+            </Allotment.Pane>
+            <Allotment.Pane
+            minSize={300}
+            priority="HIGH"
+            snap
+            visible
+            >
+                <FileSystemNavigator collection={treeData}/>
+            </Allotment.Pane>
+        </Allotment>
+    </div>
+);
+
 
 export default App;

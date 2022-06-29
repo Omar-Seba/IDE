@@ -1,1 +1,6 @@
 @import url("https://cdn.syncfusion/ej2/material.css");
+
+.App{
+  height: 100vh;
+  width: 100vw;
+}
