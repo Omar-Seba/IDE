@@ -1,9 +1,11 @@
 import React from 'react';
+import { useState } from "react";
 import './App.css';
 import Header from "./components/header-bar/Header";
 import FileSystemNavigator from "./components/drawerleft";
 import {Allotment} from "allotment";
 import "allotment/dist/style.css";
+import TextEditor from "./components/text-editor/TextEditor"
 
 const treeData = [
     {
@@ -75,31 +77,66 @@ const treeData = [
     },
 ]
 
-const App = () => 
-(
+const App = () => {
+
+    const [panes, setPanes] = useState([0, 1, 2]);
+
+    return (
+
     <div className="App" >
         <Header/>
         <Allotment>
-            <Allotment.Pane
-            preferredSize={200}
-            minSize={120}
-            priority="HIGH"
-            snap
-            visible
+            <Allotment.Pane preferredSize={200} minSize={120} priority="HIGH" snap visible
             >
                 <FileSystemNavigator collection={treeData}/>
             </Allotment.Pane>
             <Allotment.Pane
-            minSize={300}
+            minSize={200}
             priority="HIGH"
             snap
             visible
-            >
-                <FileSystemNavigator collection={treeData}/>
+            > 
+                    
+                    <div className="container" >
+                
+                <Allotment minSize={200}>
+                    
+                    <Allotment.Pane
+                    minSize={200}>
+                    
+                    <Allotment>
+                        
+                        {panes.map((pane) => (
+                        
+                        <Allotment.Pane key={pane}>
+                            
+                            <TextEditor/>
+                            
+                            <div>
+                                <div style={{ position: "absolute", top: 0, right: 0 }}>
+                                    <button className='btn'
+                                    type="button"
+                                    onClick={() =>
+                                        setPanes((panes) => {
+                                            const newPanes = [...panes];
+                                        newPanes.splice(pane, 1);
+                                        return newPanes;
+                                    })}>
+                                    x
+                                    </button>
+                                </div>
+                            </div>
+                        </Allotment.Pane>
+                        ))}
+                    </Allotment>
+                    </Allotment.Pane>
+                </Allotment>
+                </div>
             </Allotment.Pane>
+            
         </Allotment>
     </div>
-);
+)};
 
 
 export default App;
