@@ -5,7 +5,7 @@ import Header from "./components/header-bar/Header";
 import FileSystemNavigator from "./components/drawerleft";
 import {Allotment} from "allotment";
 import "allotment/dist/style.css";
-import TextEditor from "./components/text-editor/TextEditor"
+import FileScreen from './components/multiScreen/multi-screen';
 
 const treeData = [
     {
@@ -79,61 +79,24 @@ const treeData = [
 
 const App = () => {
 
-    const [panes, setPanes] = useState([0, 1, 2]);
+    const [arch, setVisible] = useState(true);
+    console.log(arch)
+
+    const deployArch = () => {
+        setVisible(arch ? false : true)
+    }
 
     return (
 
     <div className="App" >
         <Header/>
+        <button className='btn' type='button' onClick={deployArch}> x </button>
         <Allotment>
-            <Allotment.Pane preferredSize={200} minSize={120} priority="HIGH" snap visible
-            >
+            <Allotment.Pane preferredSize={200} minSize={120} priority="HIGH" snap visible={arch} >
                 <FileSystemNavigator collection={treeData}/>
             </Allotment.Pane>
-            <Allotment.Pane
-            minSize={200}
-            priority="HIGH"
-            snap
-            visible
-            > 
-                    
-                    <div className="container" >
-                
-                <Allotment minSize={200}>
-                    
-                    <Allotment.Pane
-                    minSize={200}>
-                    
-                    <Allotment>
-                        
-                        {panes.map((pane) => (
-                        
-                        <Allotment.Pane key={pane}>
-                            
-                            <TextEditor/>
-                            
-                            <div>
-                                <div style={{ position: "absolute", top: 0, right: 0 }}>
-                                    <button className='btn'
-                                    type="button"
-                                    onClick={() =>
-                                        setPanes((panes) => {
-                                            const newPanes = [...panes];
-                                        newPanes.splice(pane, 1);
-                                        return newPanes;
-                                    })}>
-                                    x
-                                    </button>
-                                </div>
-                            </div>
-                        </Allotment.Pane>
-                        ))}
-                    </Allotment>
-                    </Allotment.Pane>
-                </Allotment>
-                </div>
-            </Allotment.Pane>
-            
+           
+            <FileScreen/>
         </Allotment>
     </div>
 )};

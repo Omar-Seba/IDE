@@ -1,14 +1,19 @@
 import React from 'react'
 import "./TextEditor.css"
 
-export default function TextEditor(filename) 
+const TextEditor = (props) => 
 {
+  const OpenFile = props.OpenFile
+  const CloseFile = props.CloseFile
+  const filename = props.filename
     return(
 <>
     <div class="topnav">
-  <a class="active">filename</a>
+  <a class="active">{filename}</a> 
+  <button className='btn' onClick={CloseFile}>close</button>
+  <button className='btn' onClick={OpenFile}>open</button>
 </div>
-     <div className="editor" contenteditable="true">
+     <div className="editor" contentEditable="true">
         this text 
         can be 
         edited
@@ -16,4 +21,5 @@ export default function TextEditor(filename)
 </>
 ) 
 }
+export default TextEditor;
 
