@@ -91,14 +91,18 @@ const App = () => {
     <div className="App" >
         <Header/>
         <button className='btn' type='button' onClick={deployArch}> files </button>
-        <Allotment.Pane preferredSize={200} minSize={120} priority="LOW" snap visible={arch}>
-            <FileSystemNavigator collection={treeData}/>
-                    <Allotment.Pane vertical preferredSize={200} minSize={120} priority="HIGH" snap visible>
+        <Allotment>
+            <Allotment.Pane preferredSize={200} minSize={120} priority="LOW" snap visible={arch}>
+                <FileSystemNavigator collection={treeData}/>
+            </Allotment.Pane>
+            <Allotment.Pane minSize={300} priority="HIGH">
+                <Allotment vertical snap>
                     <FileScreen/>
-                 {/*  here should be the terminal  */}
+                    {/*  here should be the terminal  */}        
                     <FileScreen/>
-                    </Allotment.Pane>
-        </Allotment.Pane>
+                </Allotment>
+            </Allotment.Pane>
+        </Allotment>
     </div>
 )};
 

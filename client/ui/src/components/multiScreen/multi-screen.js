@@ -13,7 +13,7 @@ const FileScreen = () => {
     const CloseFile = (pane) => {
         setPanes((panes) => {
             const newPanes = [...panes];
-            newPanes.splice(pane, 1);
+            newPanes.splice(newPanes.indexOf(pane), 1);
             console.log(panes)
             return newPanes;
         })}
