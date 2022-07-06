@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import Header from "./components/header-bar/Header";
-import FileSystemNavigator from "./components/drawerleft";
+import FileSystemNavigator from "./components/tree/Tree";
+
 
 const treeData = [
     {
@@ -75,6 +76,7 @@ const treeData = [
 
 function App() {
     return (
+
         <div className="App">
             <Header/>
             <FileSystemNavigator collection={treeData}/>

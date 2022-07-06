@@ -3,6 +3,7 @@ import TreeItem from '@mui/lab/TreeItem';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import TreeView from "@mui/lab/TreeView";
+import './Tree.css';
 
 export default function FileSystemNavigator({collection}) {
     const renderTree = (nodes) => (
@@ -20,6 +21,7 @@ export default function FileSystemNavigator({collection}) {
             sx={{ height: window.innerHeight, maxWidth: 240, overflowY: 'auto' }}
         >
             {collection.map(nodes => renderTree(nodes))}
+
         </TreeView>
     )
 }

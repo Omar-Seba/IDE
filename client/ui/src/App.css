@@ -1,1 +1,6 @@
 @import url("https://cdn.syncfusion/ej2/material.css");
+html, body
+{
+    height: 100%;
+    overflow: hidden
+}

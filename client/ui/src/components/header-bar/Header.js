@@ -9,7 +9,7 @@ const Header = () => {
             <div className="multi-button">
                 <button className="btn-primary">Run</button>
                 <button className="btn-secondary">Debug</button>
-                <button className="btn-secondary-custom">Music</button>
+
             </div>
         </nav>
     )
