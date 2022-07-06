@@ -48,7 +48,7 @@ const App = () => {
             }
         };
         fetchHierarchy();
-    })
+    },[])
 
     const deployArch = () => {
         setVisible(arch ? false : true)
