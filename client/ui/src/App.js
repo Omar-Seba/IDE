@@ -5,44 +5,110 @@ import Header from "./components/header-bar/Header";
 import FileSystemNavigator from "./components/drawerleft";
 import {Allotment} from "allotment";
 import "allotment/dist/style.css";
-import FileScreen from './components/multiScreen/multi-screen';
+import {FileScreen} from './components/multiScreen/multi-screen';
 import axios from 'axios'
+
+const path = prompt("Enter the path of your work directory")
+
 
 const App = () => {
 
-    const [dataTree, setDataTree] = useState({});
-    // const [postPath, setPostPath] = useState();
-    const [arch, setVisible] = useState(true);
-
-    // useEffect(() => {
-    const postPath = async () => {
+    const fetchHierarchy = async () => {
         try {
-            // const req = await axios.get('http://localhost:4567/project', {
+            const res = await axios.get('http://localhost:4567/hierarchy')
+            setDataTree(res.data.data)
+        } catch (e) {
+            console.log(e)
+        }
+    };
+
+    const deleteNode = () =>{
+
+        //pop to enter path of the file
+        let pathOfTheFileToOpen = prompt("Please enter the path of the file that you want to open")
+       
+        // get the file from api
+        console.log(pathOfTheFileToOpen)
+        const apiCall = async () =>{
+            try{
             let headers = {
                 'Content-Type': 'text/plain'
             }
-            const res = await axios.post('http://localhost:4567/project', "{'path': '/home/chilling/Documents/ING1/S6/PING/ping-2024'}", {headers})
-            // setPostPath(res.data)
+            const res = await axios.post('http://localhost:4567/delete', "{'path' : '" + pathOfTheFileToOpen + "'}" , {headers})
+            console.log(res.data)
+            } catch (e) {
+                console.log(e)
+            }
+        };
+        apiCall()
+        fetchHierarchy();
+    }
+    const createFolder = () =>{
+
+        //pop to enter path of the file
+        let pathOfTheFileToOpen = prompt("Please enter the path of the file that you want to open")
+       
+        // get the file from api
+        console.log(pathOfTheFileToOpen)
+        const apiCall = async () =>{
+            try{
+            let headers = {
+                'Content-Type': 'text/plain'
+            }
+            const res = await axios.post('http://localhost:4567/create/folder', "{'path' : '" + pathOfTheFileToOpen + "'}" , {headers})
+            console.log(res.data)
+            } catch (e) {
+                console.log(e)
+            }
+        };
+        apiCall()
+        fetchHierarchy();
+    }
+
+    const createFile = () =>{
+
+        //pop to enter path of the file
+        let pathOfTheFileToOpen = prompt("Please enter the path of the file that you want to open")
+       
+        // get the file from api
+        console.log(pathOfTheFileToOpen)
+        const apiCall = async () =>{
+            try{
+            let headers = {
+                'Content-Type': 'text/plain'
+            }
+            const res = await axios.post('http://localhost:4567/create/file', "{'path' : '" + pathOfTheFileToOpen + "'}" , {headers})
+            console.log(res.data)
+            } catch (e) {
+                console.log(e)
+            }
+        };
+        apiCall()
+        fetchHierarchy();
+    }
+
+    const [dataTree, setDataTree] = useState({});
+    const [arch, setVisible] = useState(true);
+
+    const postPath = async () => {
+        try {
+            let headers = {
+                'Content-Type': 'text/plain'
+            }
+            const allPath = "{'path': '" + path + "'}"
+            console.log(allPath)
+            const res = await axios.post('http://localhost:4567/project', "{'path': '" + path + "'}", {headers})
             console.log(res.data)
         } catch (e) {
             console.log(e)
         }
     };
     postPath();
-    // })
 
     console.log(postPath)
 
 
     useEffect(() => {
-        const fetchHierarchy = async () => {
-            try {
-                const res = await axios.get('http://localhost:4567/hierarchy')
-                setDataTree(res.data.data)
-            } catch (e) {
-                console.log(e)
-            }
-        };
         fetchHierarchy();
     }, [])
 
@@ -54,7 +120,10 @@ const App = () => {
 
         <div className="App">
             <Header/>
-            <button className='btn' type='button' onClick={deployArch}> files</button>
+            <button className='btn' type='button' onClick={deployArch}> Deploy hierarchy</button>
+            <button className='btn' type='button' onClick={createFile}> Create File</button>
+            <button className='btn' type='button' onClick={createFolder}> Create Folder </button>
+            <button className='btn' type='button' onClick={deleteNode}> Delete</button>
             <Allotment>
                 <Allotment.Pane preferredSize={140} minSize={120} priority="LOW" snap visible={arch}>
                     <FileSystemNavigator collection={dataTree}/>
