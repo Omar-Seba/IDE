@@ -132,7 +132,7 @@ const App = () => {
                     <Allotment vertical snap>
                         <FileScreen/>
                         {/*  here should be the terminal  */}
-                        <FileScreen/>
+                        {/* <FileScreen/> */}
                     </Allotment>
                 </Allotment.Pane>
             </Allotment>
