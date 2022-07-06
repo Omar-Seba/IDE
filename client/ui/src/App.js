@@ -25,7 +25,7 @@ const App = () => {
     const deleteNode = () =>{
 
         //pop to enter path of the file
-        let pathOfTheFileToOpen = prompt("Please enter the path of the file that you want to open")
+        let pathOfTheFileToOpen = prompt("Please enter the path of the file that you want to delete")
        
         // get the file from api
         console.log(pathOfTheFileToOpen)
@@ -46,7 +46,7 @@ const App = () => {
     const createFolder = () =>{
 
         //pop to enter path of the file
-        let pathOfTheFileToOpen = prompt("Please enter the path of the file that you want to open")
+        let pathOfTheFileToOpen = prompt("Please enter the path of the folder that you want to create")
        
         // get the file from api
         console.log(pathOfTheFileToOpen)
@@ -68,7 +68,7 @@ const App = () => {
     const createFile = () =>{
 
         //pop to enter path of the file
-        let pathOfTheFileToOpen = prompt("Please enter the path of the file that you want to open")
+        let pathOfTheFileToOpen = prompt("Please enter the path of the file that you want to create")
        
         // get the file from api
         console.log(pathOfTheFileToOpen)
