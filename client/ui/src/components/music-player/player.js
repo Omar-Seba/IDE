@@ -28,7 +28,7 @@ function changeSongs(urls) {
         urls.index = 0;
 }
 
-éé""
+
 const Player = ({ urls }) => {
     let [playing, toggle] = useAudio(urls.list[urls.index]);
 
