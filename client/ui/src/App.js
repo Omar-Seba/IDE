@@ -6,6 +6,10 @@ import FileSystemNavigator from "./components/drawerleft";
 import {Allotment} from "allotment";
 import "allotment/dist/style.css";
 import FileScreen from './components/multiScreen/multi-screen';
+import axios from 'axios'
+const body = {
+    path : "/home/mrseven7/ing1/C"
+}
 
 const treeData = [
     {
@@ -77,11 +81,41 @@ const treeData = [
     },
 ]
 
+
+
+var dataTree;
+
+console.log("herer")
+const postPath = async () => {
+    // const req = await axios.get('http://localhost:4567/project', {
+    const req = await axios({
+        method: 'get',
+        url: 'http://localhost:4567/project',
+        data: {
+            path: '/home/mrseven7/ing1/C'
+        }
+      });    // const req = await axios.get('http://localhost:4567/hierarchy')
+    return req.data
+};
+
+const fetchHierarchy = async () => {
+    const res = await axios.get('http://localhost:4567/hierarchy')
+    return res.data
+};
+
+
+postPath().then(res => {
+    console.log(res)
+})
+
+fetchHierarchy().then(res => {
+    dataTree = res.data
+})
+
+
 const App = () => {
 
     const [arch, setVisible] = useState(true);
-    console.log(arch)
-
     const deployArch = () => {
         setVisible(arch ? false : true)
     }
@@ -92,7 +126,7 @@ const App = () => {
         <Header/>
         <button className='btn' type='button' onClick={deployArch}> files </button>
         <Allotment>
-            <Allotment.Pane preferredSize={200} minSize={120} priority="LOW" snap visible={arch}>
+            <Allotment.Pane preferredSize={140} minSize={120} priority="LOW" snap visible={arch}>
                 <FileSystemNavigator collection={treeData}/>
             </Allotment.Pane>
             <Allotment.Pane minSize={300} priority="HIGH">

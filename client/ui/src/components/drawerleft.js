@@ -6,7 +6,7 @@ import TreeView from "@mui/lab/TreeView";
 
 export default function FileSystemNavigator({collection}) {
     const renderTree = (nodes) => (
-        <TreeItem nodeId={nodes.key} label={nodes.name}>
+        <TreeItem nodeId={nodes.path} label={nodes.name + nodes.extension}>
             {Array.isArray(nodes.children)
                 ? nodes.children.map((node) => renderTree(node))
                 : null}
@@ -19,7 +19,7 @@ export default function FileSystemNavigator({collection}) {
             defaultExpandIcon={<ChevronRightIcon/>}
             sx={{ height: window.innerHeight, maxWidth: 240, overflowY: 'auto' }}
         >
-            {collection.map(nodes => renderTree(nodes))}
+            {renderTree(collection)}
         </TreeView>
     )
 }

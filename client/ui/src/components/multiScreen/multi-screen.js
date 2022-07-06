@@ -33,7 +33,7 @@ const FileScreen = () => {
                     <Allotment>
                         {panes.map((pane) => (
                         <Allotment.Pane key={pane}>
-                            <TextEditor filename={"file.js"} OpenFile={OpenFile} CloseFile={() => CloseFile(pane)}/>
+                            <TextEditor fileName={"file.js"} openFile={OpenFile} closeFile={() => CloseFile(pane)}/>
                         </Allotment.Pane>
                         ))}
                     </Allotment>
