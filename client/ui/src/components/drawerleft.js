@@ -5,9 +5,22 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import TreeView from "@mui/lab/TreeView";
 
 export default function FileSystemNavigator({collection}) {
-    console.log("je suis ici")
+    const renderLabel = item => (
+        <span
+            onClick={event => {
+                if (item.directory === false)
+                    console.log(item.path);
+                //setActiveItemId(item.id);
+                // if you want after click do expand/collapse comment this two line
+                event.stopPropagation();
+                event.preventDefault();
+            }}
+        >
+      {item.name + item.extension}
+    </span>
+    );
     const renderTree = (nodes) => (
-        <TreeItem nodeId={nodes.path} label={nodes.name + nodes.extension}>
+        <TreeItem nodeId={nodes.path} label={renderLabel(nodes)}>
             {Array.isArray(nodes.children)
                 ? nodes.children.map((node) => renderTree(node))
                 : null}
