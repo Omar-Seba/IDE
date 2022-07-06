@@ -5,6 +5,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import TreeView from "@mui/lab/TreeView";
 
 export default function FileSystemNavigator({collection}) {
+    console.log("je suis ici")
     const renderTree = (nodes) => (
         <TreeItem nodeId={nodes.path} label={nodes.name + nodes.extension}>
             {Array.isArray(nodes.children)
