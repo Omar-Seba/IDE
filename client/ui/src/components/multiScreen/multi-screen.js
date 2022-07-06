@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { Allotment } from 'allotment'
 import TextEditor from '../text-editor/TextEditor'
 import '../../App.css'
-import { Newspaper } from '@mui/icons-material'
 
 const FileScreen = () => {
 
