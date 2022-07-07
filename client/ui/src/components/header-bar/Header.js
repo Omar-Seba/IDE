@@ -46,7 +46,7 @@ const Header = ({childToParent, fetchHierarchy, toggleCompile, toggleOutputStrin
                 if (optionOfFile !== "")
                     res = await axios.post('http://localhost:4567/compile', "{'path' : '" + pathOfTheFileToOpen + "', 'option' : '" + optionOfFile + "'}", {headers})
                 else
-                    res = await axios.post('http://localhost:4567/compile', "{'path' : '" + pathOfTheFileToOpen + "', 'option' : '" + "null" + "'}", {headers})
+                    res = await axios.post('http://localhost:4567/compile', "{'path' : '" + pathOfTheFileToOpen + "', 'option' : '" + "-o a.out" + "'}", {headers})
 
                 resultString = res.data.data.content
                 returnValue = res.data.data.exitValue
