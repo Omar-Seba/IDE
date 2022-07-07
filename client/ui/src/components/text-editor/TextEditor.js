@@ -31,6 +31,7 @@ const TextEditor = (props) => {
         getFileContent()
     }
     let pathOfTheFileToOpen
+    let name
 
     const openFile = () =>{
         const getFileContent = async () =>{
@@ -39,7 +40,8 @@ const TextEditor = (props) => {
                 'Content-Type': 'text/plain'
             }
             const res = await axios.post('http://localhost:4567/info/file', "{'path' : '" + pathOfTheFileToOpen + "'}" , {headers})
-            setFileContent(res.data.data)
+            setFileContent(res.data.data.content);
+            name = res.data.data.name
             console.log(res.data.data)
             } catch (e) {
                 console.log(e)
@@ -50,7 +52,7 @@ const TextEditor = (props) => {
             // get the file from api
             path = pathOfTheFileToOpen;
             await getFileContent()
-            setFileName("test.c");
+            setFileName(name);
         }
         openf().then()
     }
