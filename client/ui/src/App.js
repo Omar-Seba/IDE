@@ -111,17 +111,18 @@ const App = () => {
             console.log(e)
         }
     };
-    // useEffect(() => {
+    useEffect(() => {
 
         const prompt = async () => {
+                
                 const value = await smalltalk.prompt("Open project", "Enter the path of your work directory")    
                 console.log(value)
                 setThePath(value)
             
         }
-        // prompt()
+        prompt()
 
-    // }, [])
+    }, [])
     
     postPath()
 
