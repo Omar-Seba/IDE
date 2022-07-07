@@ -16,7 +16,8 @@ import smalltalk from "smalltalk"
 
 const App = () => {
 
-    
+   let path;
+   let pathOfTheFileToOpen; 
 
 
     const fetchHierarchy = async () => {
@@ -30,9 +31,6 @@ const App = () => {
 
     const deleteNode = () =>{
 
-        //pop to enter path of the file
-        let pathOfTheFileToOpen = prompt("Please enter the path of the file that you want to delete")
-       
         // get the file from api
         console.log(pathOfTheFileToOpen)
         const apiCall = async () =>{
@@ -46,14 +44,18 @@ const App = () => {
                 console.log(e)
             }
         };
-        apiCall()
-        fetchHierarchy();
+
+        const openf = async () => {
+            pathOfTheFileToOpen = await smalltalk.prompt("Open file","Please enter the path of the file that you want to open")
+            // get the file from api
+            path = pathOfTheFileToOpen;
+            await apiCall()
+            await fetchHierarchy()
+        }
+        openf().then()
     }
     const createFolder = () =>{
 
-        //pop to enter path of the file
-        let pathOfTheFileToOpen = prompt("Please enter the path of the folder that you want to create")
-       
         // get the file from api
         console.log(pathOfTheFileToOpen)
         const apiCall = async () =>{
@@ -67,14 +69,18 @@ const App = () => {
                 console.log(e)
             }
         };
-        apiCall()
-        fetchHierarchy();
+        const openf = async () => {
+            pathOfTheFileToOpen = await smalltalk.prompt("Open file","Please enter the path of the file that you want to open")
+            // get the file from api
+            path = pathOfTheFileToOpen;
+            await apiCall()
+            await fetchHierarchy()
+        }
+        openf().then()
     }
 
     const createFile = () =>{
 
-        //pop to enter path of the file
-        let pathOfTheFileToOpen = prompt("Please enter the path of the file that you want to create")
        
         // get the file from api
         console.log(pathOfTheFileToOpen)
@@ -89,8 +95,14 @@ const App = () => {
                 console.log(e)
             }
         };
-        apiCall()
-        fetchHierarchy();
+        const openf = async () => {
+            pathOfTheFileToOpen = await smalltalk.prompt("Open file","Please enter the path of the file that you want to open")
+            // get the file from api
+            path = pathOfTheFileToOpen;
+            await apiCall()
+            await fetchHierarchy()
+        }
+        openf().then()
     }
 
     const [dataTree, setDataTree] = useState({});
