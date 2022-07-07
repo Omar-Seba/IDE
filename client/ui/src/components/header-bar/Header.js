@@ -9,13 +9,14 @@ import getUnicodeFlagIcon from 'country-flag-icons/unicode'
 import ToggleConfetti from "../../confettis/ToogleConfettis";
 import axios from "axios";
 import smalltalk from "smalltalk";
+import StopConfettis from "../../confettis/StopConfettis";
 
 const Header = ({childToParent, fetchHierarchy, toggleCompile, toggleOutputString, compile, toggleErrorString, toggleReturnValueString, witcher}) => {
     const [isMalagasy, setIsMalagasy] = useState(false);
-    const [isFinish, dropConfetti] = useState(false);
+    const [isFinish, dropConfetti] = useState(-1);
 
-    const toggleIsFinish = () => {
-        dropConfetti(current => !current);
+    const toggleIsFinish = (value) => {
+        dropConfetti(value);
     }
 
     const toggleIsMalagasy = () => {
@@ -97,6 +98,8 @@ const Header = ({childToParent, fetchHierarchy, toggleCompile, toggleOutputStrin
                 resultString = res.data.data.out_content
                 resultStringError = res.data.data.err_content
                 returnValue = res.data.data.exitValue
+                toggleIsFinish(returnValue)
+
                 console.log("res")
                 console.log(res)
                 await fetchHierarchy()
@@ -141,25 +144,52 @@ const Header = ({childToParent, fetchHierarchy, toggleCompile, toggleOutputStrin
         }
         openf().then()
     }
+    if (isFinish === 0) {
+        setTimeout(() => {
+            toggleIsFinish(-1)
+        }, 5000);
+        return (
+            <nav className="header">
+                <img src={!witcher ? logo : logo2} className="logo" alt="logo" />
+                <div className="multi-button">
+                    <button className="btn-secondary-custom" onClick={compileCode}>{isMalagasy ? "Manangona" : "Compile"}</button>
+                    <button className="btn-primary" onClick={runCode}>{isMalagasy ? "Mihazakazaka" : "Run"}</button>
+                    <button className="btn-secondary" onClick={debugCode}>{isMalagasy ? "Vahaolana" : "Debug"}</button>
+                    <Player urls={urls} malagasy={isMalagasy}/>
+                    <StopWatch malagasy={isMalagasy}/>
+                    <button className={"btn-secondary-custom flag"}
+                            onClick={function() {
+                                toggleIsMalagasy();
+                                childToParent(isMalagasy)
+                            }}>
+                        {isMalagasy ? getUnicodeFlagIcon('MG') : getUnicodeFlagIcon('US')}</button>
+                </div>
+                <ToggleConfetti />
+            </nav>
+        )
+    }
+    else {
+        return (
+            <nav className="header">
+                <img src={!witcher ? logo : logo2} className="logo" alt="logo" />
+                <div className="multi-button">
+                    <button className="btn-secondary-custom" onClick={compileCode}>{isMalagasy ? "Manangona" : "Compile"}</button>
+                    <button className="btn-primary" onClick={runCode}>{isMalagasy ? "Mihazakazaka" : "Run"}</button>
+                    <button className="btn-secondary" onClick={debugCode}>{isMalagasy ? "Vahaolana" : "Debug"}</button>
+                    <Player urls={urls} malagasy={isMalagasy}/>
+                    <StopWatch malagasy={isMalagasy}/>
+                    <button className={"btn-secondary-custom flag"}
+                            onClick={function() {
+                                toggleIsMalagasy();
+                                childToParent(isMalagasy)
+                            }}>
+                        {isMalagasy ? getUnicodeFlagIcon('MG') : getUnicodeFlagIcon('US')}</button>
+                </div>
+                <StopConfettis />
 
-    return (
-        <nav className="header">
-            <img src={!witcher ? logo : logo2} className="logo" alt="logo" />
-            <div className="multi-button">
-                <button className="btn-secondary-custom" onClick={compileCode}>{isMalagasy ? "Manangona" : "Compile"}</button>
-                <button className="btn-primary" onClick={runCode}>{isMalagasy ? "Mihazakazaka" : "Run"}</button>
-                <button className="btn-secondary" onClick={debugCode}>{isMalagasy ? "Vahaolana" : "Debug"}</button>
-                <Player urls={urls} malagasy={isMalagasy}/>
-                <StopWatch malagasy={isMalagasy}/>
-                <button className={"btn-secondary-custom flag"}
-                        onClick={function() {
-                            toggleIsMalagasy();
-                            childToParent(isMalagasy)
-                        }}>
-                    {isMalagasy ? getUnicodeFlagIcon('MG') : getUnicodeFlagIcon('US')}</button>
-            </div>
-        </nav>
-    )
+            </nav>
+        )
+    }
 }
 
 export default Header;
