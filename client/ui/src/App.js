@@ -223,42 +223,53 @@ const App = () => {
         setSizeFont(arrFont[pos + 1])
     }
 
+    const refreshApp = () =>{
+
+        window.location.reload()
+    }
+
     return (
         <div className={!witcher ? defaultTheme + sizeFont : sorcierTheme + sizeFont}>
+
             <Header witcher={witcher} childToParent={childToParent} fetchHierarchy={fetchHierarchy} toggleCompile={toggleCompile} toggleOutputString={toggleOutputString} compile={compile} toggleErrorString={toggleErrorString} toggleReturnValueString={toggleReturnValueString}/>
-            <button className='btn' type='button' onClick={deployArch}>
+          
+            <button className='btn' title='Open new project' type='button' onClick={refreshApp}>
+                <FontAwesomeIcon icon={solid('rotate')}/>
+                {/* {!data ? " Manaparitaka Hazo" : " Deploy hierarchy"} */}
+            </button>
+            <button className='btn' title='deploy/hide hierarchy' type='button' onClick={deployArch}>
                 <FontAwesomeIcon icon={solid('folder-tree')}/>
                 {/* {!data ? " Manaparitaka Hazo" : " Deploy hierarchy"} */}
-                </button>
-            <button className='btn' type='button' onClick={createFile}>
+            </button>
+            <button className='btn' title='create file' type='button' onClick={createFile}>
                 <FontAwesomeIcon icon={solid('plus')}/>
                 <FontAwesomeIcon icon={solid('file')}/>
                  {/* {!data ? " Mamorona Rakitra" : " Create File"} */}
                  </button>
-            <button className='btn' type='button' onClick={createFolder}>
+            <button className='btn' title='create folder' type='button' onClick={createFolder}>
                 <FontAwesomeIcon icon={solid('plus')}/>
                 <FontAwesomeIcon icon={solid('folder')}/>
                 {/* {!data ? " Mamorona Lahatahiry" : " Create Folder"}  */}
             </button>
-            <button className='btn' type='button' onClick={deleteNode}>
+            <button className='btn' title='delete file/folder' type='button' onClick={deleteNode}>
                 <FontAwesomeIcon icon={solid('trash')}/>
                 {/* {!data ? " Hamafa" : " Delete"} */}
                 </button>
-            <button className='btn' type='button' onClick={decreaseFont}>
+            <button className='btn' title='decrease font' type='button' onClick={decreaseFont}>
                 <FontAwesomeIcon icon={solid('minus')}/>
                 <FontAwesomeIcon icon={solid('font')}/>
                 {/* {!data ? "Terminus" : "Terminal"} */}
             </button>
-            <button className='btn' type='button' onClick={increaseFont}>
+            <button className='btn' title='increase font' type='button' onClick={increaseFont}>
                 <FontAwesomeIcon icon={solid('plus')}/>
                 <FontAwesomeIcon icon={solid('font')}/>
                 {/* {!data ? "Terminus" : "Terminal"} */}
             </button>
-            <button className='btn' type='button' onClick={launchTerminal}>
+            <button className='btn' title='lauch xfce4-terminal in a new window' type='button' onClick={launchTerminal}>
                 <FontAwesomeIcon icon={solid('terminal')}/>
                 {/* {!data ? "Terminus" : "Terminal"} */}
             </button>
-            <button className='btn' onClick={toggleWitcher}>
+            <button className='btn' title="switch theme" onClick={toggleWitcher}>
                 <FontAwesomeIcon icon={solid('truck-moving')}/>
                 {/* {!props.data ? "Akaiky" : "Close"} */}
             </button>

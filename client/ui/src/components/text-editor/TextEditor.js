@@ -75,19 +75,19 @@ const TextEditor = (props) => {
         <>
             <div class="topnav">
                 <a class="active">{fileName}</a>
-                <button className='btn' onClick={DuplicateFile}>
+                <button className='btn' title='splice the window' onClick={DuplicateFile}>
                     <FontAwesomeIcon icon={solid('table-columns')}/>
                     {/* {!props.data ? "Saraho" : "Split"} */}
                     </button>
-                <button className='btn' onClick={openFile}>
+                <button className='btn' title='open file' onClick={openFile}>
                     <FontAwesomeIcon icon={solid('folder-open')}/>
                     {/* {!props.data ? "Misokatra" : "Open"} */}
                     </button>
-                <button className='btn' onClick={saveFile}>
+                <button className='btn' title='save file' onClick={saveFile}>
                     <FontAwesomeIcon icon={solid('floppy-disk')}/>
                     {/* {!props.data ? "Afa-tsy" : "Save"} */}
                     </button>
-                <button className='btn' onClick={closeFile}>
+                <button className='btn' title='close'  onClick={closeFile}>
                     <FontAwesomeIcon icon={solid('xmark')}/>
                     {/* {!props.data ? "Akaiky" : "Close"} */}
                 </button>
