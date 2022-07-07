@@ -51,7 +51,7 @@ const FileScreen = (isMalagasy) => {
             return newPanes
         })}
     return (
-        <Allotment.Pane minSize={200} priority="HIGH" snap visible> 
+        <Allotment.Pane minSize={200} priority="HIGH" snap visible>
             
             <div className="container" >
                 <Allotment minSize={200}>

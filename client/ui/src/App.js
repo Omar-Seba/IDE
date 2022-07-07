@@ -5,6 +5,7 @@ import Header from "./components/header-bar/Header";
 import {Allotment} from "allotment";
 import "allotment/dist/style.css";
 import {FileScreen} from './components/multiScreen/multi-screen';
+import TerminalViewer from "./components/text-editor/terminalViewer";
 import axios from 'axios'
 import FileSystemNavigator from "./components/tree/Tree";
 import smalltalk from "smalltalk"
@@ -108,6 +109,29 @@ const App = () => {
 
     const [dataTree, setDataTree] = useState({});
     const [arch, setVisible] = useState(true);
+    const [compile, setCompile] = useState(false);
+    const [outputString, setOutputString] = useState("");
+    const [errorString, setErrorString] = useState("");
+    const [returnValueString, setReturnValueString] = useState("");
+
+    const toggleCompile = () => {
+        setCompile(current => !current);
+    };
+    const toggleOutputString = (value) => {
+        console.log("Value : ")
+        console.log(value)
+        setOutputString(value);
+    };
+    const toggleErrorString = (value) => {
+        console.log("Value : ")
+        console.log(value)
+        setErrorString(value);
+    };
+    const toggleReturnValueString = (value) => {
+        console.log("Value : ")
+        console.log(value)
+        setReturnValueString(value);
+    };
     //const [path, setThePath] = useState("");
 
     const postPath = async (path) => {
@@ -160,12 +184,13 @@ const App = () => {
     }
 
     const launchTerminal = () => {
-
+        axios.get('http://localhost:4567/terminal').then()
     }
+
 
     return (
         <div className="App">
-            <Header childToParent={childToParent}/>
+            <Header childToParent={childToParent} fetchHierarchy={fetchHierarchy} toggleCompile={toggleCompile} toggleOutputString={toggleOutputString} compile={compile} toggleErrorString={toggleErrorString} toggleReturnValueString={toggleReturnValueString}/>
             <button className='btn' type='button' onClick={deployArch}>{!data ? "Manaparitaka Hazo" : "Deploy hierarchy"}</button>
             <button className='btn' type='button' onClick={createFile}> {!data ? "Mamorona Rakitra" : "Create File"}</button>
             <button className='btn' type='button' onClick={createFolder}>{!data ? "Mamorona Lahatahiry" : "Create Folder"} </button>
@@ -179,7 +204,9 @@ const App = () => {
                     <Allotment vertical snap>
                         <FileScreen isMalagasy={data}/>
                         {/*  here should be the terminal  */}
-                        {/* <FileScreen/> */}
+                        <Allotment.Pane visible={compile}>
+                            <TerminalViewer toggleCompile={toggleCompile} isMalagasy={data} result={outputString} result_err={errorString} exitValue={returnValueString}/>
+                        </Allotment.Pane>
                     </Allotment>
                 </Allotment.Pane>
             </Allotment>
