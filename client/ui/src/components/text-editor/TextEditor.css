@@ -1,15 +1,6 @@
 
-.editor{
-
-    border: 2cm;
-    font-size: 22px;
-    text-align: left;
-    margin-top: 0.2cm;
-    margin-left:0.2cm;
-  height: 100vh;
-  width: 100vw;
-
-
+.CodeMirror * {
+    font-size: 40px;
 }
 .topnav {
     /* overflow: hidden; */
