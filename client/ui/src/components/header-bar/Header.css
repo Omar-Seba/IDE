@@ -28,6 +28,7 @@
 }
 
 button {
+    margin-top: 0.2rem;
     margin-left: 1rem;
     border: 0;
     border-radius: 5px;
@@ -38,7 +39,6 @@ button {
     padding: 0.5rem;
     font-size: 1rem;
     background-color: #78E0DC;
-    box-shadow: 0 8px #2dc5bf;
 }
 button:hover {
     cursor: pointer;
@@ -51,7 +51,6 @@ button:hover, button:focus {
 }
 button:active {
     transform: translateY(4px);
-    box-shadow: 0 3px #2dc5bf;
 }
 
 .btn-primary {
@@ -64,7 +63,6 @@ button:active {
     padding: 0.5rem 1rem;
     font-size: 1rem;
     background-color: #38b224;
-    box-shadow: 0 8px #2e8c00;
 }
 .btn-primary:hover {
     cursor: pointer;
@@ -90,7 +88,6 @@ button:active {
     padding: 0.5rem 1rem;
     font-size: 1rem;
     background-color: #ff3030;
-    box-shadow: 0 8px #791e1e;
 }
 .btn-secondary:hover {
     cursor: pointer;
@@ -103,7 +100,6 @@ button:active {
 }
 .btn-secondary:active {
     transform: translateY(4px);
-    box-shadow: 0 3px #e31515;
 }
 
 .btn-secondary-custom {
@@ -116,7 +112,6 @@ button:active {
     padding: 0.6rem 1rem;
     font-size: 1rem;
     background-color: #FDE74C;
-    box-shadow: 0 8px #e0c503;
 }
 .btn-secondary-custom:hover {
     cursor: pointer;
@@ -129,5 +124,4 @@ button:active {
 }
 .btn-secondary-custom:active {
     transform: translateY(4px);
-    box-shadow: 0 3px #e0c503;
 }

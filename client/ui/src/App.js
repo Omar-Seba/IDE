@@ -8,6 +8,7 @@ import {FileScreen} from './components/multiScreen/multi-screen';
 import axios from 'axios'
 import FileSystemNavigator from "./components/tree/Tree";
 import smalltalk from "smalltalk"
+import ToggleConfetti from "./confettis/ToogleConfettis";
 
 
 // const path = prompt("Enter the path of your work directory")
@@ -163,7 +164,6 @@ const App = () => {
     }
 
     return (
-
         <div className="App">
             <Header childToParent={childToParent}/>
             <button className='btn' type='button' onClick={deployArch}>{!data ? "Manaparitaka Hazo" : "Deploy hierarchy"}</button>
