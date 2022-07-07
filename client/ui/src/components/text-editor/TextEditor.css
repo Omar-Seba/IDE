@@ -19,10 +19,16 @@
 }
 
 .btn{
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
     size: 0.5cm;
-    font-size: 5px;
-    color: rgb(0, 0, 0);
-    border-radius: 0;
+    font-size: 9px;
+    border-radius: 5px;
+    font-family: "Muli", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    color: white;
     box-shadow: 0 0;
-background-color: rgb(60, 60, 107);
+background-color: grey;
 }

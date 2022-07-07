@@ -6,7 +6,7 @@ import axios from 'axios'
 var updatedFile = ""
 var path = ""
 
-const TextEditor = (props) => 
+const TextEditor = (props) =>
 {
 
     const [fileName, setFileName] = useState("default") 
@@ -53,14 +53,15 @@ const TextEditor = (props) =>
   const OpenFile = props.openFile
   const DuplicateFile = props.DuplicateFile
   const closeFile = props.closeFile
+
     return(
 <>
     <div class="topnav">
   <a class="active">{fileName}</a> 
-  <button className='btn' onClick={closeFile}>close</button>
-  <button className='btn' onClick={DuplicateFile}>splice</button>
-  <button className='btn' onClick={openFile}>open</button>
-  <button className='btn' onClick={saveFile}>save</button>
+  <button className='btn' onClick={closeFile}>{!props.data ? "Akaiky": "Close"}</button>
+  <button className='btn' onClick={DuplicateFile}>{!props.data ? "Saraho": "Split"}</button>
+  <button className='btn' onClick={openFile}>{!props.data ? "Misokatra": "Open"}</button>
+  <button className='btn' onClick={saveFile}>{!props.data ? "Afa-tsy": "Save"}</button>
 </div>
     <div className="editor" contentEditable="true" onInput={(e) => {
     updatedFile = e.currentTarget.textContent

@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import logo from "../../images/barbytes512.png";
 import StopWatch from "../stop-watch/StopWatch";
 import Player from "../music-player/player";
+import getUnicodeFlagIcon from 'country-flag-icons/unicode'
 
-const Header = () => {
+const Header = ({childToParent}) => {
+    const [isMalagasy, setIsMalagasy] = useState(false);
+
+    const toggleIsMalagasy = () => {
+        setIsMalagasy(current => !current);
+    };
+
+
     const urls = {
         list: [
             "https://www.ne.jp/asahi/music/myuu/wave/hana.mp3",
@@ -17,10 +25,16 @@ const Header = () => {
         <nav className="header">
             <img src={logo} className="logo" alt="logo" />
             <div className="multi-button">
-                <button className="btn-primary">Run</button>
-                <button className="btn-secondary">Debug</button>
-                <Player urls={urls}/>
-                <StopWatch />
+                <button className="btn-primary">{isMalagasy ? "Mihazakazaka" : "Run"}</button>
+                <button className="btn-secondary">{isMalagasy ? "Vahaolana" : "Debug"}</button>
+                <Player urls={urls} malagasy={isMalagasy}/>
+                <StopWatch malagasy={isMalagasy}/>
+                <button className={"btn-secondary-custom flag"}
+                        onClick={function() {
+                            toggleIsMalagasy();
+                            childToParent(isMalagasy)
+                        }}>
+                    {isMalagasy ? getUnicodeFlagIcon('MG') : getUnicodeFlagIcon('US')}</button>
             </div>
         </nav>
     )

@@ -126,21 +126,29 @@ const App = () => {
         setVisible(arch ? false : true)
     }
 
+
+    const [data, setData] = useState(true);
+    const childToParent = (childData) => {
+        setData(childData)
+    }
+
+
+    console.log("var app " + data)
     return (
 
         <div className="App">
-            <Header/>
-            <button className='btn' type='button' onClick={deployArch}> Deploy hierarchy</button>
-            <button className='btn' type='button' onClick={createFile}> Create File</button>
-            <button className='btn' type='button' onClick={createFolder}> Create Folder </button>
-            <button className='btn' type='button' onClick={deleteNode}> Delete</button>
+            <Header childToParent={childToParent}/>
+            <button className='btn' type='button' onClick={deployArch}>{!data ? "Manaparitaka Hazo" : "Deploy hierarchy"}</button>
+            <button className='btn' type='button' onClick={createFile}> {!data ? "Mamorona Rakitra" : "Create File"}</button>
+            <button className='btn' type='button' onClick={createFolder}>{!data ? "Mamorona Lahatahiry" : "Create Folder"} </button>
+            <button className='btn' type='button' onClick={deleteNode}> {!data ? "Hamafa" : "Delete"}</button>
             <Allotment>
                 <Allotment.Pane preferredSize={140} minSize={120} priority="LOW" snap visible={arch}>
                     <FileSystemNavigator collection={dataTree}/>
                 </Allotment.Pane>
                 <Allotment.Pane minSize={300} priority="HIGH">
                     <Allotment vertical snap>
-                        <FileScreen/>
+                        <FileScreen isMalagasy={data}/>
                         {/*  here should be the terminal  */}
                         {/* <FileScreen/> */}
                     </Allotment>

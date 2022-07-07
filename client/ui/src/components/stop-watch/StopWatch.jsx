@@ -58,22 +58,42 @@ class Stopwatch extends React.Component {
     };
 
     render() {
-        return (
-            <div className={'stopwatch'}>
-                {this.state.running === false && (
-                    <button className="butt" onClick={this.start}>Start</button>
-                )}
-                {this.state.running === true && (
-                    <button className="butt" onClick={this.stop}>Stop</button>
-                )}
-                <button className="butt" onClick={this.reset}>Reset</button>
-                <StopwatchDisplay
-                    ref="display"
-                    {...this.state}
-                    formatTime={this.formatTime}
-                />
-            </div>
-        );
+        if (this.props.malagasy) {
+            return (
+                <div className={'stopwatch'}>
+                    {this.state.running === false && (
+                        <button className="butt" onClick={this.start}>Fanombohana</button>
+                    )}
+                    {this.state.running === true && (
+                        <button className="butt" onClick={this.stop}>Mijanòna</button>
+                    )}
+                    <button className="butt" onClick={this.reset}>Mamerina</button>
+                    <StopwatchDisplay
+                        ref="display"
+                        {...this.state}
+                        formatTime={this.formatTime}
+                    />
+                </div>
+            );
+        }
+        else {
+            return (
+                <div className={'stopwatch'}>
+                    {this.state.running === false && (
+                        <button className="butt" onClick={this.start}>Start</button>
+                    )}
+                    {this.state.running === true && (
+                        <button className="butt" onClick={this.stop}>Stop</button>
+                    )}
+                    <button className="butt" onClick={this.reset}>Reset</button>
+                    <StopwatchDisplay
+                        ref="display"
+                        {...this.state}
+                        formatTime={this.formatTime}
+                    />
+                </div>
+            );
+        }
     }
 }
 
