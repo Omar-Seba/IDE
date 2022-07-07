@@ -21,13 +21,26 @@ const Header = ({childToParent}) => {
         ],
         index: 0,
     }
+
+    const compileCode = () => {
+
+    }
+
+    const runCode = () => {
+
+    }
+
+    const debugCode = () => {
+
+    }
+
     return (
         <nav className="header">
             <img src={logo} className="logo" alt="logo" />
             <div className="multi-button">
-                <button className="btn-secondary-custom">{isMalagasy ? "Manangona" : "Compile"}</button>
-                <button className="btn-primary">{isMalagasy ? "Mihazakazaka" : "Run"}</button>
-                <button className="btn-secondary">{isMalagasy ? "Vahaolana" : "Debug"}</button>
+                <button className="btn-secondary-custom" onClick={compileCode}>{isMalagasy ? "Manangona" : "Compile"}</button>
+                <button className="btn-primary" onClick={runCode}>{isMalagasy ? "Mihazakazaka" : "Run"}</button>
+                <button className="btn-secondary"onClick={debugCode}>{isMalagasy ? "Vahaolana" : "Debug"}</button>
                 <Player urls={urls} malagasy={isMalagasy}/>
                 <StopWatch malagasy={isMalagasy}/>
                 <button className={"btn-secondary-custom flag"}

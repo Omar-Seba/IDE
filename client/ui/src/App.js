@@ -159,7 +159,7 @@ const App = () => {
     }
 
     const launchTerminal = () => {
-        
+
     }
 
     return (
