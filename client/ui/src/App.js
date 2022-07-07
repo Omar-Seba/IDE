@@ -158,8 +158,10 @@ const App = () => {
         setData(childData)
     }
 
+    const launchTerminal = () => {
+        
+    }
 
-    console.log("var app " + data)
     return (
 
         <div className="App">
@@ -168,6 +170,7 @@ const App = () => {
             <button className='btn' type='button' onClick={createFile}> {!data ? "Mamorona Rakitra" : "Create File"}</button>
             <button className='btn' type='button' onClick={createFolder}>{!data ? "Mamorona Lahatahiry" : "Create Folder"} </button>
             <button className='btn' type='button' onClick={deleteNode}> {!data ? "Hamafa" : "Delete"}</button>
+            <button className='btn' type='button' onClick={launchTerminal}> {!data ? "Terminus" : "Terminal"}</button>
             <Allotment>
                 <Allotment.Pane preferredSize={140} minSize={120} priority="LOW" snap visible={arch}>
                     <FileSystemNavigator collection={dataTree}/>
