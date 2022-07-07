@@ -118,21 +118,35 @@ const App = () => {
             console.log(allPath)
             const res = await axios.post('http://localhost:4567/project', "{'path': '" + path + "'}", {headers})
             console.log(res.data)
+            if ((res.data.status) ==="ERROR")
+            {
+                console.log("dwew")
+                return false
+            }
             await fetchHierarchy();
-        } catch (e) {
+            return true;
+        } catch (e) {                        
+            console.log("here")
             console.log(e)
+            return false;
         }
     };
+    
     useEffect(() => {
-
+        
+        var value = ""
         const prompt = async () => {
-                
-                const value = await smalltalk.prompt("Open project", "Enter the path of your work directory")    
+
+            do{
+                value = await smalltalk.prompt("Open project", "Enter the path of your work directory")    
                 console.log(value)
-                await postPath(value)
+            }while(! await postPath(value))
         }
+        
         prompt().then()
     }, [])
+
+
 
     const deployArch = () => {
         setVisible(arch ? false : true)
