@@ -116,7 +116,28 @@ const Header = ({childToParent, fetchHierarchy, toggleCompile, toggleOutputStrin
     }
 
     const debugCode = () => {
+        let pathOfTheFileToOpen;
 
+        const apiCall = async (pathOfTheFileToOpen) =>{
+            try{
+                let headers = {
+                    'Content-Type': 'text/plain'
+                }
+                let res = await axios.post('http://localhost:4567/debug', "{'path': '" + pathOfTheFileToOpen + "'}", {headers})
+
+                console.log("res")
+                console.log(res)
+                await fetchHierarchy()
+            } catch (e) {
+                console.log(e)
+            }
+        };
+        const openf = async () => {
+            pathOfTheFileToOpen = await smalltalk.prompt("Debug file","Please enter the path of the main file")
+
+            await apiCall(pathOfTheFileToOpen)
+        }
+        openf().then()
     }
 
     return (
