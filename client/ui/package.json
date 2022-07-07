@@ -9,6 +9,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/lab": "^5.0.0-alpha.87",
     "@mui/material": "^5.8.5",
+    "@replit/codemirror-vim": "^6.0.0",
     "@syncfusion/ej2-react-navigations": "^20.1.61",
     "@syncfusion/ej2-react-treegrid": "^20.1.60",
     "@testing-library/jest-dom": "^5.16.4",

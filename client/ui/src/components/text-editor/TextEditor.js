@@ -2,6 +2,7 @@ import axios from 'axios'
 import CodeMirror from '@uiw/react-codemirror';
 import {dracula} from '@uiw/codemirror-theme-dracula';
 import {cpp} from '@codemirror/lang-cpp';
+import {vim} from "@replit/codemirror-vim"
 import React, { useEffect, useState } from 'react'
 import "./TextEditor.css"
 import smalltalk from 'smalltalk'
@@ -85,7 +86,7 @@ const TextEditor = (props) => {
                 value={fileContent}
                 theme={dracula}
                 height="100vh"
-                extensions={[cpp()]}
+                extensions={[cpp(), vim()]}
                 onChange={setFileContent}
             />
 
