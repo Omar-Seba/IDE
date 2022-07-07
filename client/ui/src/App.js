@@ -7,11 +7,17 @@ import "allotment/dist/style.css";
 import {FileScreen} from './components/multiScreen/multi-screen';
 import axios from 'axios'
 import FileSystemNavigator from "./components/tree/Tree";
+import smalltalk from "smalltalk"
 
-const path = prompt("Enter the path of your work directory")
+
+// const path = prompt("Enter the path of your work directory")
+
 
 
 const App = () => {
+
+    
+
 
     const fetchHierarchy = async () => {
         try {
@@ -89,6 +95,7 @@ const App = () => {
 
     const [dataTree, setDataTree] = useState({});
     const [arch, setVisible] = useState(true);
+    const [path, setThePath] = useState("");
 
     const postPath = async () => {
         try {
@@ -99,18 +106,29 @@ const App = () => {
             console.log(allPath)
             const res = await axios.post('http://localhost:4567/project', "{'path': '" + path + "'}", {headers})
             console.log(res.data)
+            fetchHierarchy();
         } catch (e) {
             console.log(e)
         }
     };
-    postPath();
+    // useEffect(() => {
 
-    console.log(postPath)
+        const prompt = async () => {
+                const value = await smalltalk.prompt("Open project", "Enter the path of your work directory")    
+                console.log(value)
+                setThePath(value)
+            
+        }
+        // prompt()
 
+    // }, [])
+    
+    postPath()
 
-    useEffect(() => {
-        fetchHierarchy();
-    }, [])
+    
+    // useEffect(() => {
+    //     fetchHierarchy();
+    // }, [])
 
     const deployArch = () => {
         setVisible(arch ? false : true)
