@@ -193,14 +193,38 @@ const App = () => {
 
     }
 
+    const defaultTheme = "App "
+    const sorcierTheme = "sorcier "
+    const bigFont = "grand"
+    const normalFont = "normal"
+    const smallFont = "small"
+    const xsmallFont = "xsmall"
+    const xbigFont = "xgrand"
+    const xxbigFont = "xxgrand"
+    const [sizeFont, setSizeFont] = useState(normalFont)
+
     const [witcher, setWitcher] = useState(false);
     const toggleWitcher = () => {
         setWitcher(current => !current);
     }
+    const arrFont = [xsmallFont, smallFont, normalFont, bigFont, xbigFont, xxbigFont]
 
+    const decreaseFont = () =>{
+        const pos = arrFont.indexOf(sizeFont)
+        if (pos == 0)
+            return
+        setSizeFont(arrFont[pos - 1])
+    }
+
+    const increaseFont = () =>{
+        const pos = arrFont.indexOf(sizeFont)
+        if (pos == 5)
+            return
+        setSizeFont(arrFont[pos + 1])
+    }
 
     return (
-        <div className={!witcher ? "App" : "sorcier"}>
+        <div className={!witcher ? defaultTheme + sizeFont : sorcierTheme + sizeFont}>
             <Header witcher={witcher} childToParent={childToParent} fetchHierarchy={fetchHierarchy} toggleCompile={toggleCompile} toggleOutputString={toggleOutputString} compile={compile} toggleErrorString={toggleErrorString} toggleReturnValueString={toggleReturnValueString}/>
             <button className='btn' type='button' onClick={deployArch}>
                 <FontAwesomeIcon icon={solid('folder-tree')}/>
@@ -220,6 +244,16 @@ const App = () => {
                 <FontAwesomeIcon icon={solid('trash')}/>
                 {/* {!data ? " Hamafa" : " Delete"} */}
                 </button>
+            <button className='btn' type='button' onClick={decreaseFont}>
+                <FontAwesomeIcon icon={solid('minus')}/>
+                <FontAwesomeIcon icon={solid('font')}/>
+                {/* {!data ? "Terminus" : "Terminal"} */}
+            </button>
+            <button className='btn' type='button' onClick={increaseFont}>
+                <FontAwesomeIcon icon={solid('plus')}/>
+                <FontAwesomeIcon icon={solid('font')}/>
+                {/* {!data ? "Terminus" : "Terminal"} */}
+            </button>
             <button className='btn' type='button' onClick={launchTerminal}>
                 <FontAwesomeIcon icon={solid('terminal')}/>
                 {/* {!data ? "Terminus" : "Terminal"} */}

@@ -17,15 +17,27 @@
     color: rgb(0, 0, 100);
 }
 
+.xsmall {
+    font-size: 10px;
+}
+
+.small {
+    font-size: 12px;
+}
+
 .normal {
     font-size: 15px;
 }
 
 .grand {
+    font-size: 20px;
+}
+
+.xgrand {
     font-size: 30px;
 }
 
-.x-grand {
+.xxgrand {
     font-size: 50px;
 }
 
