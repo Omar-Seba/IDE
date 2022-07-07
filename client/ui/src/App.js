@@ -95,9 +95,9 @@ const App = () => {
 
     const [dataTree, setDataTree] = useState({});
     const [arch, setVisible] = useState(true);
-    const [path, setThePath] = useState("");
+    //const [path, setThePath] = useState("");
 
-    const postPath = async () => {
+    const postPath = async (path) => {
         try {
             let headers = {
                 'Content-Type': 'text/plain'
@@ -106,7 +106,7 @@ const App = () => {
             console.log(allPath)
             const res = await axios.post('http://localhost:4567/project', "{'path': '" + path + "'}", {headers})
             console.log(res.data)
-            fetchHierarchy();
+            await fetchHierarchy();
         } catch (e) {
             console.log(e)
         }
@@ -117,19 +117,10 @@ const App = () => {
                 
                 const value = await smalltalk.prompt("Open project", "Enter the path of your work directory")    
                 console.log(value)
-                setThePath(value)
-            
+                await postPath(value)
         }
-        prompt()
-
+        prompt().then()
     }, [])
-    
-    postPath()
-
-    
-    // useEffect(() => {
-    //     fetchHierarchy();
-    // }, [])
 
     const deployArch = () => {
         setVisible(arch ? false : true)
