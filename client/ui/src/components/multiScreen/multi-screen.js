@@ -50,6 +50,9 @@ const FileScreen = ({isMalagasy, witcher}) => {
             const newPanes = [...panes, panes[panes.length - 1] + 1];
             return newPanes
         })}
+
+    console.log(isMalagasy)
+    console.log(isMalagasy.isMalagasy)
     return (
         <Allotment.Pane minSize={200} priority="HIGH" snap visible>
             
@@ -59,7 +62,7 @@ const FileScreen = ({isMalagasy, witcher}) => {
                     <Allotment>
                         {panes.map((pane) => (
                         <Allotment.Pane key={pane}>
-                            <TextEditor data={isMalagasy.isMalagasy} sorcier={witcher} fileName={"file.js"} OpenFile={openFile} DuplicateFile={DuplicateFile} closeFile={() => CloseFile(pane)}/>
+                            <TextEditor data={isMalagasy} sorcier={witcher} fileName={"file.js"} OpenFile={openFile} DuplicateFile={DuplicateFile} closeFile={() => CloseFile(pane)}/>
                         </Allotment.Pane>
                         ))}
                     </Allotment>

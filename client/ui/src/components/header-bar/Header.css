@@ -1,8 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Muli:400,700,800&display=swap");
 
-
-.header {
+.fontTimes{
+    font-family: 'Times New Roman', Times, serif;
+}
+.fontSansSerif{
     font-family: "Muli", Arial, sans-serif;
+}
+.fontMonospace{
+    font-family:'Lucida Console', 'Times New Roman', monospace, serif, ;
+}
+.header {
+    /* font-family: Arial, Helvetica, sans-serif; */
     font-weight: 800;
     text-transform: uppercase;
     text-align: left;
@@ -33,7 +41,7 @@ button {
     border: 0;
     border-radius: 5px;
     color: #1F1A25;
-    font-family: "Muli", Arial, sans-serif;
+    /* font-family: "Muli", Arial, sans-serif; */
     font-weight: 400;
     text-transform: uppercase;
     padding: 0.5rem;
@@ -57,7 +65,7 @@ button:active {
     border: 0;
     border-radius: 5px;
     color: #1F1A25;
-    font-family: "Muli", Arial, sans-serif;
+    /* font-family: "Muli", Arial, sans-serif; */
     font-weight: 800;
     text-transform: uppercase;
     padding: 0.5rem 1rem;
@@ -82,7 +90,7 @@ button:active {
     border: 0;
     border-radius: 5px;
     color: #1F1A25;
-    font-family: "Muli", Arial, sans-serif;
+    /* font-family: "Muli", Arial, sans-serif; */
     font-weight: 800;
     text-transform: uppercase;
     padding: 0.5rem 1rem;
@@ -106,7 +114,7 @@ button:active {
     border: 0;
     border-radius: 5px;
     color: #1F1A25;
-    font-family: "Muli", Arial, sans-serif;
+    /* font-family: "Muli", Arial, sans-serif; */
     font-weight: 800;
     text-transform: uppercase;
     padding: 0.6rem 1rem;

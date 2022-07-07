@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    font-family: "Muli", Arial, sans-serif;
+    /* font-family: "Muli", Arial, sans-serif; */
     font-weight: 800;
     text-align: left;
     min-height: 100%;
@@ -23,7 +23,7 @@ body {
 
     padding-left: 20px;
     margin-top: 10px;
-    font-family: 'Roboto Mono', monospace;
+    /* font-family: 'Roboto Mono', monospace; */
     font-size: 30px;
     color: #d5c44e;
 }
@@ -31,4 +31,14 @@ body {
 .butt {
     font-weight: 800;
 
+}
+
+.fontTimes{
+    font-family: 'Times New Roman', Times, serif;
+}
+.fontSansSerif{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.fontMonospace{
+    font-family: 'Courier New', Courier, monospace
 }

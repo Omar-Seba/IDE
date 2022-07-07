@@ -25,8 +25,9 @@ function randomNumberInRange(min, max) {
     // 👇️ get number between min (inclusive) and max (inclusive)
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-const Player = ({ urls, malagasy }) => {
+const Player = ({ font, urls, malagasy }) => {
 
+    const btnsecondarycustom = "btn-secondary-custom " + font
     let [playing, toggle] = useAudio(urls.list[randomNumberInRange(0, 2)]);
 /*
     if (!playing && urls.index !== 0) {
@@ -34,12 +35,12 @@ const Player = ({ urls, malagasy }) => {
     }*/
     if (malagasy) {
         return (
-            <button className="btn-secondary-custom" onClick={toggle}>{playing ? "Fiatoana" : "Milalao"}</button>
+            <button className={btnsecondarycustom} onClick={toggle}>{playing ? "Fiatoana" : "Milalao"}</button>
         );
     }
     else {
         return (
-            <button className="btn-secondary-custom" onClick={toggle}>{playing ? "Pause" : "Play"}</button>
+            <button className={btnsecondarycustom} onClick={toggle}>{playing ? "Pause" : "Play"}</button>
         );
     }
 };

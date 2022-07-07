@@ -193,6 +193,9 @@ const App = () => {
 
     }
 
+    const fontMonospace = " fontMonospace"
+    const fontSansSerif = " fontSansSerif"
+    const fontTimes = " fontTimes"
     const defaultTheme = "App "
     const sorcierTheme = "sorcier "
     const bigFont = "grand"
@@ -202,6 +205,7 @@ const App = () => {
     const xbigFont = "xgrand"
     const xxbigFont = "xxgrand"
     const [sizeFont, setSizeFont] = useState(normalFont)
+    const [Font, setFont] = useState(fontSansSerif)
 
     const [witcher, setWitcher] = useState(false);
     const toggleWitcher = () => {
@@ -223,53 +227,74 @@ const App = () => {
         setSizeFont(arrFont[pos + 1])
     }
 
+    const setfontTimes = () => {
+        setFont(fontTimes)
+    }
+    const setfontSanserif = () => {
+        setFont(fontSansSerif)
+    }
+    const setfontMonospace = () => {
+        setFont(fontMonospace)
+    }
+
     const refreshApp = () =>{
 
         window.location.reload()
     }
-
+    const defaultClassName = defaultTheme + sizeFont + Font
+    const sorcierClassName = sorcierTheme + sizeFont + Font
     return (
-        <div className={!witcher ? defaultTheme + sizeFont : sorcierTheme + sizeFont}>
+        <div className={!witcher ? defaultClassName : sorcierClassName}>
 
-            <Header witcher={witcher} childToParent={childToParent} fetchHierarchy={fetchHierarchy} toggleCompile={toggleCompile} toggleOutputString={toggleOutputString} compile={compile} toggleErrorString={toggleErrorString} toggleReturnValueString={toggleReturnValueString}/>
+            <Header font={Font} witcher={witcher} childToParent={childToParent} fetchHierarchy={fetchHierarchy} toggleCompile={toggleCompile} toggleOutputString={toggleOutputString} compile={compile} toggleErrorString={toggleErrorString} toggleReturnValueString={toggleReturnValueString}/>
           
-            <button className='btn' title='Open new project' type='button' onClick={refreshApp}>
+            <button className='btn' title={!data ? " Manaparitaka Hazo" :'Open new project'} type='button' onClick={refreshApp}>
                 <FontAwesomeIcon icon={solid('rotate')}/>
                 {/* {!data ? " Manaparitaka Hazo" : " Deploy hierarchy"} */}
             </button>
-            <button className='btn' title='deploy/hide hierarchy' type='button' onClick={deployArch}>
+            <button className='btn' title={!data ? " Manaparitaka Hazo" :'deploy/hide hierarchy'} type='button' onClick={deployArch}>
                 <FontAwesomeIcon icon={solid('folder-tree')}/>
                 {/* {!data ? " Manaparitaka Hazo" : " Deploy hierarchy"} */}
             </button>
-            <button className='btn' title='create file' type='button' onClick={createFile}>
+            <button className='btn' title={!data ? " Mamorona Rakitra" :'create file'} type='button' onClick={createFile}>
                 <FontAwesomeIcon icon={solid('plus')}/>
                 <FontAwesomeIcon icon={solid('file')}/>
                  {/* {!data ? " Mamorona Rakitra" : " Create File"} */}
                  </button>
-            <button className='btn' title='create folder' type='button' onClick={createFolder}>
+            <button className='btn' title={!data ? " Mamorona Lahatahiry" :'create folder'} type='button' onClick={createFolder}>
                 <FontAwesomeIcon icon={solid('plus')}/>
                 <FontAwesomeIcon icon={solid('folder')}/>
                 {/* {!data ? " Mamorona Lahatahiry" : " Create Folder"}  */}
             </button>
-            <button className='btn' title='delete file/folder' type='button' onClick={deleteNode}>
+            <button className='btn' title={!data ? " Hamafa" :'delete file/folder'} type='button' onClick={deleteNode}>
                 <FontAwesomeIcon icon={solid('trash')}/>
                 {/* {!data ? " Hamafa" : " Delete"} */}
                 </button>
-            <button className='btn' title='decrease font' type='button' onClick={decreaseFont}>
+            <button className='btn' title={!data ? "mampihena ny endritsoratra" :'decrease font'} type='button' onClick={decreaseFont}>
                 <FontAwesomeIcon icon={solid('minus')}/>
                 <FontAwesomeIcon icon={solid('font')}/>
                 {/* {!data ? "Terminus" : "Terminal"} */}
             </button>
-            <button className='btn' title='increase font' type='button' onClick={increaseFont}>
+            <button className='btn' title={!data ? "mampitombo endritsoratra" :'increase font'} type='button' onClick={increaseFont}>
                 <FontAwesomeIcon icon={solid('plus')}/>
                 <FontAwesomeIcon icon={solid('font')}/>
                 {/* {!data ? "Terminus" : "Terminal"} */}
             </button>
-            <button className='btn' title='lauch xfce4-terminal in a new window' type='button' onClick={launchTerminal}>
+            <div class="dropdown">
+                <button class="dropbtn" className="btn">
+                    <FontAwesomeIcon icon={solid('font')}/>
+                </button>
+                <div class="dropdown-content">
+                    <a onClick={setfontTimes} >Times New Roman</a>
+                    <a onClick={setfontSanserif}>Arial</a>
+                    <a onClick={setfontMonospace}>Courier New</a>
+                </div>
+            </div>
+            <button className='btn' title={!data ? "Terminus" :'launch terminal'} type='button' onClick={launchTerminal}>
                 <FontAwesomeIcon icon={solid('terminal')}/>
                 {/* {!data ? "Terminus" : "Terminal"} */}
             </button>
-            <button className='btn' title="switch theme" onClick={toggleWitcher}>
+            <button className='btn' title={!data ? "mifamadika lohahevitra" :"switch theme"} onClick={toggleWitcher}>
                 <FontAwesomeIcon icon={solid('truck-moving')}/>
                 {/* {!props.data ? "Akaiky" : "Close"} */}
             </button>

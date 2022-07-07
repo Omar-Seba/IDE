@@ -57,17 +57,19 @@ class Stopwatch extends React.Component {
         });
     };
 
+    
     render() {
+        const butt = "butt " + this.props.font;
         if (this.props.malagasy) {
             return (
                 <div className={'stopwatch'}>
                     {this.state.running === false && (
-                        <button className="butt" onClick={this.start}>Fanombohana</button>
+                        <button className={butt} onClick={this.start}>Fanombohana</button>
                     )}
                     {this.state.running === true && (
-                        <button className="butt" onClick={this.stop}>Mijanòna</button>
+                        <button className={butt} onClick={this.stop}>Mijanòna</button>
                     )}
-                    <button className="butt" onClick={this.reset}>Mamerina</button>
+                    <button className={butt} onClick={this.reset}>Mamerina</button>
                     <StopwatchDisplay
                         ref="display"
                         {...this.state}
@@ -80,12 +82,12 @@ class Stopwatch extends React.Component {
             return (
                 <div className={'stopwatch'}>
                     {this.state.running === false && (
-                        <button className="butt" onClick={this.start}>Start</button>
+                        <button className={butt} onClick={this.start}>Start</button>
                     )}
                     {this.state.running === true && (
-                        <button className="butt" onClick={this.stop}>Stop</button>
+                        <button className={butt} onClick={this.stop}>Stop</button>
                     )}
-                    <button className="butt" onClick={this.reset}>Reset</button>
+                    <button className={butt} onClick={this.reset}>Reset</button>
                     <StopwatchDisplay
                         ref="display"
                         {...this.state}

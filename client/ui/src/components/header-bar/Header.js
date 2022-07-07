@@ -11,7 +11,7 @@ import axios from "axios";
 import smalltalk from "smalltalk";
 import StopConfettis from "../../confettis/StopConfettis";
 
-const Header = ({childToParent, fetchHierarchy, toggleCompile, toggleOutputString, compile, toggleErrorString, toggleReturnValueString, witcher}) => {
+const Header = ({ font ,childToParent, fetchHierarchy, toggleCompile, toggleOutputString, compile, toggleErrorString, toggleReturnValueString, witcher}) => {
     const [isMalagasy, setIsMalagasy] = useState(false);
     const [isFinish, dropConfetti] = useState(-1);
 
@@ -144,19 +144,25 @@ const Header = ({childToParent, fetchHierarchy, toggleCompile, toggleOutputStrin
         }
         openf().then()
     }
+    const btnsecondarycustom = "btn-secondary-custom " + font
+    const btnprimary = "btn-primary " + font
+    const btnsecondary = "btn-secondary " + font
+
+    console.log(font)
     if (isFinish === 0) {
         setTimeout(() => {
             toggleIsFinish(-1)
         }, 5000);
+
         return (
             <nav className="header">
                 <img src={!witcher ? logo : logo2} className="logo" alt="logo" />
                 <div className="multi-button">
-                    <button className="btn-secondary-custom" onClick={compileCode}>{isMalagasy ? "Manangona" : "Compile"}</button>
-                    <button className="btn-primary" onClick={runCode}>{isMalagasy ? "Mihazakazaka" : "Run"}</button>
-                    <button className="btn-secondary" onClick={debugCode}>{isMalagasy ? "Vahaolana" : "Debug"}</button>
-                    <Player urls={urls} malagasy={isMalagasy}/>
-                    <StopWatch malagasy={isMalagasy}/>
+                    <button className={btnsecondarycustom} onClick={compileCode}>{isMalagasy ? "Manangona" : "Compile"}</button>
+                    <button className={btnprimary} onClick={runCode}>{isMalagasy ? "Mihazakazaka" : "Run"}</button>
+                    <button className={btnsecondary} onClick={debugCode}>{isMalagasy ? "Vahaolana" : "Debug"}</button>
+                    <Player font={font} urls={urls} malagasy={isMalagasy}/>
+                    <StopWatch font={font} malagasy={isMalagasy}/>
                     <button className={"btn-secondary-custom flag"}
                             onClick={function() {
                                 toggleIsMalagasy();
@@ -173,11 +179,11 @@ const Header = ({childToParent, fetchHierarchy, toggleCompile, toggleOutputStrin
             <nav className="header">
                 <img src={!witcher ? logo : logo2} className="logo" alt="logo" />
                 <div className="multi-button">
-                    <button className="btn-secondary-custom" onClick={compileCode}>{isMalagasy ? "Manangona" : "Compile"}</button>
-                    <button className="btn-primary" onClick={runCode}>{isMalagasy ? "Mihazakazaka" : "Run"}</button>
-                    <button className="btn-secondary" onClick={debugCode}>{isMalagasy ? "Vahaolana" : "Debug"}</button>
-                    <Player urls={urls} malagasy={isMalagasy}/>
-                    <StopWatch malagasy={isMalagasy}/>
+                    <button className={btnsecondarycustom} onClick={compileCode}>{isMalagasy ? "Manangona" : "Compile"}</button>
+                    <button className={btnprimary} onClick={runCode}>{isMalagasy ? "Mihazakazaka" : "Run"}</button>
+                    <button className={btnsecondary} onClick={debugCode}>{isMalagasy ? "Vahaolana" : "Debug"}</button>
+                    <Player font={font} urls={urls} malagasy={isMalagasy}/>
+                    <StopWatch font={font} malagasy={isMalagasy}/>
                     <button className={"btn-secondary-custom flag"}
                             onClick={function() {
                                 toggleIsMalagasy();

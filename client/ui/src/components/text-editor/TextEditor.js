@@ -63,31 +63,25 @@ const TextEditor = (props) => {
     const DuplicateFile = props.DuplicateFile
     const closeFile = props.closeFile
 
-    const increase = () => {
-
-    }
-
-    const decrease = () => {
-
-    }
+    console.log(props.data) 
 
     return (
         <>
             <div class="topnav">
                 <a class="active">{fileName}</a>
-                <button className='btn' title='splice the window' onClick={DuplicateFile}>
+                <button className='btn' title={!props.data ? "Saraho" : 'split the window'} onClick={DuplicateFile}>
                     <FontAwesomeIcon icon={solid('table-columns')}/>
                     {/* {!props.data ? "Saraho" : "Split"} */}
                     </button>
-                <button className='btn' title='open file' onClick={openFile}>
+                <button className='btn' title={!props.data ? "Misokatra" :'open file'} onClick={openFile}>
                     <FontAwesomeIcon icon={solid('folder-open')}/>
                     {/* {!props.data ? "Misokatra" : "Open"} */}
                     </button>
-                <button className='btn' title='save file' onClick={saveFile}>
+                <button className='btn' title={!props.data ? "Afa-tsy" :'save file'} onClick={saveFile}>
                     <FontAwesomeIcon icon={solid('floppy-disk')}/>
                     {/* {!props.data ? "Afa-tsy" : "Save"} */}
                     </button>
-                <button className='btn' title='close'  onClick={closeFile}>
+                <button className='btn' title={!props.data ? "Akaiky" :'close'}  onClick={closeFile}>
                     <FontAwesomeIcon icon={solid('xmark')}/>
                     {/* {!props.data ? "Akaiky" : "Close"} */}
                 </button>
