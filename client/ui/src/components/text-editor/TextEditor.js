@@ -94,7 +94,7 @@ const TextEditor = (props) => {
             </div>
             <CodeMirror
                 value={fileContent}
-                theme={dracula}
+                theme={!props.sorcier ? dracula : "light"}
                 height="100vh"
                 extensions={[cpp(), vim()]}
                 onChange={setFileContent}

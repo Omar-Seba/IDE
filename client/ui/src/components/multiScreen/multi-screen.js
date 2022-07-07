@@ -30,7 +30,7 @@ const openFile = () =>{
 }
 
 
-const FileScreen = (isMalagasy) => {
+const FileScreen = ({isMalagasy, witcher}) => {
     const [panes, setPanes] = useState([0]);
     var counter = 0;
 
@@ -59,7 +59,7 @@ const FileScreen = (isMalagasy) => {
                     <Allotment>
                         {panes.map((pane) => (
                         <Allotment.Pane key={pane}>
-                            <TextEditor data={isMalagasy.isMalagasy} fileName={"file.js"} OpenFile={openFile} DuplicateFile={DuplicateFile} closeFile={() => CloseFile(pane)}/>
+                            <TextEditor data={isMalagasy.isMalagasy} sorcier={witcher} fileName={"file.js"} OpenFile={openFile} DuplicateFile={DuplicateFile} closeFile={() => CloseFile(pane)}/>
                         </Allotment.Pane>
                         ))}
                     </Allotment>

@@ -189,10 +189,19 @@ const App = () => {
         axios.get('http://localhost:4567/terminal').then()
     }
 
+    const switchTheme = () => {
+
+    }
+
+    const [witcher, setWitcher] = useState(false);
+    const toggleWitcher = () => {
+        setWitcher(current => !current);
+    }
+
 
     return (
-        <div className="App">
-            <Header childToParent={childToParent} fetchHierarchy={fetchHierarchy} toggleCompile={toggleCompile} toggleOutputString={toggleOutputString} compile={compile} toggleErrorString={toggleErrorString} toggleReturnValueString={toggleReturnValueString}/>
+        <div className={!witcher ? "App" : "sorcier"}>
+            <Header witcher={witcher} childToParent={childToParent} fetchHierarchy={fetchHierarchy} toggleCompile={toggleCompile} toggleOutputString={toggleOutputString} compile={compile} toggleErrorString={toggleErrorString} toggleReturnValueString={toggleReturnValueString}/>
             <button className='btn' type='button' onClick={deployArch}>
                 <FontAwesomeIcon icon={solid('folder-tree')}/>
                 {/* {!data ? " Manaparitaka Hazo" : " Deploy hierarchy"} */}
@@ -203,7 +212,7 @@ const App = () => {
                  {/* {!data ? " Mamorona Rakitra" : " Create File"} */}
                  </button>
             <button className='btn' type='button' onClick={createFolder}>
-                <FontAwesomeIcon icon={solid('plus')}/> 
+                <FontAwesomeIcon icon={solid('plus')}/>
                 <FontAwesomeIcon icon={solid('folder')}/>
                 {/* {!data ? " Mamorona Lahatahiry" : " Create Folder"}  */}
             </button>
@@ -211,9 +220,13 @@ const App = () => {
                 <FontAwesomeIcon icon={solid('trash')}/>
                 {/* {!data ? " Hamafa" : " Delete"} */}
                 </button>
-            <button className='btn' type='button' onClick={launchTerminal}> 
+            <button className='btn' type='button' onClick={launchTerminal}>
                 <FontAwesomeIcon icon={solid('terminal')}/>
                 {/* {!data ? "Terminus" : "Terminal"} */}
+            </button>
+            <button className='btn' onClick={toggleWitcher}>
+                <FontAwesomeIcon icon={solid('truck-moving')}/>
+                {/* {!props.data ? "Akaiky" : "Close"} */}
             </button>
             <Allotment>
                 <Allotment.Pane preferredSize={140} minSize={120} priority="LOW" snap visible={arch}>
@@ -221,10 +234,10 @@ const App = () => {
                 </Allotment.Pane>
                 <Allotment.Pane minSize={300} priority="HIGH">
                     <Allotment vertical snap>
-                        <FileScreen isMalagasy={data}/>
+                        <FileScreen isMalagasy={data} witcher={witcher}/>
                         {/*  here should be the terminal  */}
                         <Allotment.Pane visible={compile}>
-                            <TerminalViewer toggleCompile={toggleCompile} isMalagasy={data} result={outputString} result_err={errorString} exitValue={returnValueString}/>
+                            <TerminalViewer witcher={witcher} toggleCompile={toggleCompile} isMalagasy={data} result={outputString} result_err={errorString} exitValue={returnValueString}/>
                         </Allotment.Pane>
                     </Allotment>
                 </Allotment.Pane>
