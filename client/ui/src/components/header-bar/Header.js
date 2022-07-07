@@ -25,6 +25,7 @@ const Header = ({childToParent}) => {
         <nav className="header">
             <img src={logo} className="logo" alt="logo" />
             <div className="multi-button">
+                <button className="btn-secondary-custom">{isMalagasy ? "Manangona" : "Compile"}</button>
                 <button className="btn-primary">{isMalagasy ? "Mihazakazaka" : "Run"}</button>
                 <button className="btn-secondary">{isMalagasy ? "Vahaolana" : "Debug"}</button>
                 <Player urls={urls} malagasy={isMalagasy}/>

@@ -61,6 +61,14 @@ const TextEditor = (props) => {
     const DuplicateFile = props.DuplicateFile
     const closeFile = props.closeFile
 
+    const increase = () => {
+
+    }
+
+    const decrease = () => {
+
+    }
+
     return (
         <>
             <div class="topnav">
@@ -69,6 +77,9 @@ const TextEditor = (props) => {
                 <button className='btn' onClick={DuplicateFile}>{!props.data ? "Saraho" : "Split"}</button>
                 <button className='btn' onClick={openFile}>{!props.data ? "Misokatra" : "Open"}</button>
                 <button className='btn' onClick={saveFile}>{!props.data ? "Afa-tsy" : "Save"}</button>
+                <button className='btn' onClick={increase}>{!props.data ? "hampitombo ny haben'ny endritsoratra" : "Increase font size"}</button>
+                <button className='btn' onClick={decrease}>{!props.data ? "mampihena ny haben'ny endritsoratra" : "Decrease font size"}</button>
+
             </div>
             <CodeMirror
                 value={fileContent}

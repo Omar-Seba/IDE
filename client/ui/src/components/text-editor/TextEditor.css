@@ -3,7 +3,7 @@
 
     border: 2cm;
     font-size: 22px;
-    text-align:left;
+    text-align: left;
     margin-top: 0.2cm;
     margin-left:0.2cm;
   height: 100vh;
@@ -21,6 +21,7 @@
 .btn{
     margin-top: 0.4rem;
     margin-bottom: 0.4rem;
+    margin-right: 0;
     size: 0.5cm;
     font-size: 9px;
     border-radius: 5px;
@@ -30,5 +31,5 @@
     padding: 0.6rem 1rem;
     color: white;
     box-shadow: 0 0;
-background-color: grey;
+    background-color: grey;
 }
