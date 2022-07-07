@@ -10,6 +10,8 @@ import axios from 'axios'
 import FileSystemNavigator from "./components/tree/Tree";
 import smalltalk from "smalltalk"
 import ToggleConfetti from "./confettis/ToogleConfettis";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {solid, regular, brands} from '@fortawesome/fontawesome-svg-core/import.macro'
 
 
 // const path = prompt("Enter the path of your work directory")
@@ -48,7 +50,7 @@ const App = () => {
         };
 
         const openf = async () => {
-            pathOfTheFileToOpen = await smalltalk.prompt("Open file","Please enter the path of the file that you want to open")
+            pathOfTheFileToOpen = await smalltalk.prompt("Delete file or folder","Please enter the name of the file or folder that you want to delete")
             // get the file from api
             path = pathOfTheFileToOpen;
             await apiCall()
@@ -72,7 +74,7 @@ const App = () => {
             }
         };
         const openf = async () => {
-            pathOfTheFileToOpen = await smalltalk.prompt("Open file","Please enter the path of the file that you want to open")
+            pathOfTheFileToOpen = await smalltalk.prompt("Create folder","Please enter the name of the folder that you want to open")
             // get the file from api
             path = pathOfTheFileToOpen;
             await apiCall()
@@ -98,7 +100,7 @@ const App = () => {
             }
         };
         const openf = async () => {
-            pathOfTheFileToOpen = await smalltalk.prompt("Open file","Please enter the path of the file that you want to open")
+            pathOfTheFileToOpen = await smalltalk.prompt("Create file","Please enter the name of the file that you want to create")
             // get the file from api
             path = pathOfTheFileToOpen;
             await apiCall()
@@ -191,11 +193,28 @@ const App = () => {
     return (
         <div className="App">
             <Header childToParent={childToParent} fetchHierarchy={fetchHierarchy} toggleCompile={toggleCompile} toggleOutputString={toggleOutputString} compile={compile} toggleErrorString={toggleErrorString} toggleReturnValueString={toggleReturnValueString}/>
-            <button className='btn' type='button' onClick={deployArch}>{!data ? "Manaparitaka Hazo" : "Deploy hierarchy"}</button>
-            <button className='btn' type='button' onClick={createFile}> {!data ? "Mamorona Rakitra" : "Create File"}</button>
-            <button className='btn' type='button' onClick={createFolder}>{!data ? "Mamorona Lahatahiry" : "Create Folder"} </button>
-            <button className='btn' type='button' onClick={deleteNode}> {!data ? "Hamafa" : "Delete"}</button>
-            <button className='btn' type='button' onClick={launchTerminal}> {!data ? "Terminus" : "Terminal"}</button>
+            <button className='btn' type='button' onClick={deployArch}>
+                <FontAwesomeIcon icon={solid('folder-tree')}/>
+                {/* {!data ? " Manaparitaka Hazo" : " Deploy hierarchy"} */}
+                </button>
+            <button className='btn' type='button' onClick={createFile}>
+                <FontAwesomeIcon icon={solid('plus')}/>
+                <FontAwesomeIcon icon={solid('file')}/>
+                 {/* {!data ? " Mamorona Rakitra" : " Create File"} */}
+                 </button>
+            <button className='btn' type='button' onClick={createFolder}>
+                <FontAwesomeIcon icon={solid('plus')}/> 
+                <FontAwesomeIcon icon={solid('folder')}/>
+                {/* {!data ? " Mamorona Lahatahiry" : " Create Folder"}  */}
+            </button>
+            <button className='btn' type='button' onClick={deleteNode}>
+                <FontAwesomeIcon icon={solid('trash')}/>
+                {/* {!data ? " Hamafa" : " Delete"} */}
+                </button>
+            <button className='btn' type='button' onClick={launchTerminal}> 
+                <FontAwesomeIcon icon={solid('terminal')}/>
+                {/* {!data ? "Terminus" : "Terminal"} */}
+            </button>
             <Allotment>
                 <Allotment.Pane preferredSize={140} minSize={120} priority="LOW" snap visible={arch}>
                     <FileSystemNavigator collection={dataTree}/>

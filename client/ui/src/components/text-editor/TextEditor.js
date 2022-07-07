@@ -6,7 +6,8 @@ import {vim} from "@replit/codemirror-vim"
 import React, { useEffect, useState } from 'react'
 import "./TextEditor.css"
 import smalltalk from 'smalltalk'
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {solid, regular, brands} from '@fortawesome/fontawesome-svg-core/import.macro'
 
 var updatedFile = ""
 var path = ""
@@ -74,11 +75,22 @@ const TextEditor = (props) => {
         <>
             <div class="topnav">
                 <a class="active">{fileName}</a>
-                <button className='btn' onClick={closeFile}>{!props.data ? "Akaiky" : "Close"}</button>
-                <button className='btn' onClick={DuplicateFile}>{!props.data ? "Saraho" : "Split"}</button>
-                <button className='btn' onClick={openFile}>{!props.data ? "Misokatra" : "Open"}</button>
-                <button className='btn' onClick={saveFile}>{!props.data ? "Afa-tsy" : "Save"}</button>
-
+                <button className='btn' onClick={DuplicateFile}>
+                    <FontAwesomeIcon icon={solid('table-columns')}/>
+                    {/* {!props.data ? "Saraho" : "Split"} */}
+                    </button>
+                <button className='btn' onClick={openFile}>
+                    <FontAwesomeIcon icon={solid('folder-open')}/>
+                    {/* {!props.data ? "Misokatra" : "Open"} */}
+                    </button>
+                <button className='btn' onClick={saveFile}>
+                    <FontAwesomeIcon icon={solid('floppy-disk')}/>
+                    {/* {!props.data ? "Afa-tsy" : "Save"} */}
+                    </button>
+                <button className='btn' onClick={closeFile}>
+                    <FontAwesomeIcon icon={solid('xmark')}/>
+                    {/* {!props.data ? "Akaiky" : "Close"} */}
+                </button>
             </div>
             <CodeMirror
                 value={fileContent}
