@@ -8,6 +8,7 @@ import "./TextEditor.css"
 import smalltalk from 'smalltalk'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {solid, regular, brands} from '@fortawesome/fontawesome-svg-core/import.macro'
+import { fontGrid } from '@mui/material/styles/cssUtils';
 
 var updatedFile = ""
 var path = ""
@@ -63,12 +64,13 @@ const TextEditor = (props) => {
     const DuplicateFile = props.DuplicateFile
     const closeFile = props.closeFile
 
+    const className = "active " + props.font;
     console.log(props.data) 
 
     return (
         <>
             <div class="topnav">
-                <a class="active">{fileName}</a>
+                <a class={className}>{fileName}</a>
                 <button className='btn' title={!props.data ? "Saraho" : 'split the window'} onClick={DuplicateFile}>
                     <FontAwesomeIcon icon={solid('table-columns')}/>
                     {/* {!props.data ? "Saraho" : "Split"} */}

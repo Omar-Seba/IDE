@@ -304,7 +304,7 @@ const App = () => {
                 </Allotment.Pane>
                 <Allotment.Pane minSize={300} priority="HIGH">
                     <Allotment vertical snap>
-                        <FileScreen isMalagasy={data} witcher={witcher}/>
+                        <FileScreen font={Font} isMalagasy={data} witcher={witcher}/>
                         {/*  here should be the terminal  */}
                         <Allotment.Pane visible={compile}>
                             <TerminalViewer witcher={witcher} toggleCompile={toggleCompile} isMalagasy={data} result={outputString} result_err={errorString} exitValue={returnValueString}/>
