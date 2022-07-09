@@ -49,7 +49,7 @@ const Header = ({ font ,childToParent, fetchHierarchy, toggleCompile, toggleOutp
                 if (optionOfFile !== "")
                     res = await axios.post('http://localhost:4567/compile', "{'path' : '" + pathOfTheFileToOpen + "', 'option' : '" + optionOfFile + "'}", {headers})
                 else
-                    res = await axios.post('http://localhost:4567/compile', "{'path' : '" + pathOfTheFileToOpen + "', 'option' : '" + "-o a.out" + "'}", {headers})
+                    res = await axios.post('http://localhost:4567/compile', "{'path' : '" + pathOfTheFileToOpen + "', 'option' : null}", {headers})
 
                 resultString = res.data.data.content
                 returnValue = res.data.data.exitValue
@@ -135,6 +135,7 @@ const Header = ({ font ,childToParent, fetchHierarchy, toggleCompile, toggleOutp
                 await fetchHierarchy()
             } catch (e) {
                 console.log(e)
+                await fetchHierarchy()
             }
         };
         const openf = async () => {
